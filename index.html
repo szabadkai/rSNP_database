@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
     <head>
@@ -11,42 +10,13 @@
 
         <h1>Welcome to the rSNP database!</h1>
         <br>
-        <br>
         <p>
-        <strong>insert SNP id:</strong>
-        <br>
-            
-        <textarea id="batch_text" name="batch_text" rows="8" cols="50"></textarea>  
+            <form action="/cgi-bin/print_data.py" method="POST" enctype="application/x-www-form-urlencoded">
+            <input type="text" name="SNPs">
+            <input type=submit value="Select"></form>
+
         </p>
-
-        
         <p>For now <a href="cgi-bin/fetch_data.py">data</a>. Enjoy!</p>
-        <ul>
-            <li><a href="http://www.abc.hu/en">ABC</a></li>
-            
-        </ul>
        
-    </body>
-</html>
-<!--
+</body></html>
 
-    [[[[[[[[[[[[[[[     ]]]]]]]]]]]]]]]
-    [::::::::::::::     ::::::::::::::]
-    [::::::::::::::     ::::::::::::::]
-    [::::::[[[[[[[:     :]]]]]]]::::::]
-    [:::::[                     ]:::::]
-    [:::::[                     ]:::::]
-    [:::::[                     ]:::::]
-    [:::::[                     ]:::::]
-    [:::::[    CODE THE WEB     ]:::::]
-    [:::::[  http://brackets.io ]:::::]
-    [:::::[                     ]:::::]
-    [:::::[                     ]:::::]
-    [:::::[                     ]:::::]
-    [:::::[                     ]:::::]
-    [::::::[[[[[[[:     :]]]]]]]::::::]
-    [::::::::::::::     ::::::::::::::]
-    [::::::::::::::     ::::::::::::::]
-    [[[[[[[[[[[[[[[     ]]]]]]]]]]]]]]]
-
--->
