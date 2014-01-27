@@ -46,3 +46,14 @@ def header(header_text, header_level=2):
 
 def para(para_text):
     return('<p>' + para_text + '</p>') 
+
+def table(table_list):
+    for row in table_list:
+        print "<thead>"
+        for col in sorted(row.keys()):
+            print "<th>%s</th>" % col
+        print "</thead>"
+        print "<tr>"
+        for col in sorted(row.keys()):
+            print "<th>%s</th>" % row[col]
+        print "</tr>"
