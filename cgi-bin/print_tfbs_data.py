@@ -16,7 +16,7 @@ form_data = cgi.FieldStorage().getvalue('id')
 print(yate.start_response())
 print(yate.include_header(''))  
 with con: 
-    print '<div class="rsnp"><table>'
+    print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS 
                     WHERE TFBS_ID='%s' AND 
@@ -36,5 +36,5 @@ with con:
     
     print("</table></div><br>")
     print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
-print(yate.include_footer({"Home": "/index.html"}))
+print(yate.include_footer({""}))
 

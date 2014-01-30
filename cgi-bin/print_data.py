@@ -22,7 +22,7 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 field = cgi.FieldStorage()['SNPs'].value
 
 with con: 
-    print '<div><table><thead><tr><th>rSNP</th><th>TFBS</th></tr></thead>'
+    print '<div class="input_field"><table><thead><tr><th>rSNP</th><th>TFBS</th></tr></thead>'
     for form_data in split_input(field):
         try:
             cur = con.cursor()
@@ -37,4 +37,4 @@ with con:
         except:
             pass
 print("</table></div><br>")       
-print(yate.include_footer({"Home": "/index.html"}))
+print(yate.include_footer({""}))

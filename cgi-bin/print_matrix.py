@@ -11,7 +11,7 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 form_data = cgi.FieldStorage().getvalue('id')
 
 print(yate.start_response())
-print(yate.include_header("DATA"))  
+print(yate.include_header(""))  
 print "rSNP: "+form_data
 with con:
     cur = con.cursor(mdb.cursors.DictCursor)
@@ -21,6 +21,6 @@ with con:
                     TFBS.TFBS_ID=RS.TFBS_ID AND 
                     TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
     rows = cur.fetchall()
-    print "<p class='preserve'>%s</p>" % rows[0]['matrix_bin'].replace('\n','<br>')
+    print "<p class='input_field preserve'>%s</p>" % rows[0]['matrix_bin'].replace('\n','<br>')
     
-print(yate.include_footer({"Home": "/index.html"}))
+print(yate.include_footer())

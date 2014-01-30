@@ -14,7 +14,7 @@ header={'rs_ID' :'SNP ID' ,'TFBS_ID' : 'TFBS' , 'freq_major':'F Major', 'freq_mi
 print(yate.start_response())
 print(yate.include_header(""))  
 with con:
-    print '<div class="rsnp"><table>'
+    print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID
                     FROM    RS, TFBS
@@ -35,4 +35,4 @@ with con:
         print "</tr>"
     print("</tr></table></div>")   
     print "<br><a href='print_matrix.py?id=%s'>show matrix</a>" % form_data
-print(yate.include_footer({"Home": "/index.html"}))
+print(yate.include_footer())

@@ -15,7 +15,7 @@ html, body, div{
 
 
 .preserve{
-
+    white-space:pre-wrap;
 }
 
 @charset "utf-8";
@@ -87,17 +87,17 @@ li ul,li ol{
 
 /* ** ** custom select color ** ** */
 ::selection {
-    background: #525252; /* Safari */
+    background: #7583cc; /* Safari */
     }
 ::-moz-selection {
-    background: #525252; /* Firefox */
+    background: #7583cc; /* Firefox */
     color:#fff;
 }
 /* ** ** paragraph styling ** ** */
 p {margin:0 0 1.52em;}
 
 .input_field {
-    margin-left: 50px;
+    margin-left: 30px;
 }
 table{
     border-collapse:collapse;
