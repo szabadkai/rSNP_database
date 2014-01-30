@@ -9,7 +9,7 @@ def include_header(the_title):
     with open('../templates/header.html') as headf:
         head_text = headf.read()
     header = Template(head_text)
-    return(header.substitute(title=the_title))
+    return(header.substitute(title=the_title)+'<div class="container">')
 
 def include_footer(the_links):
     with open('../templates/footer.html') as footf:
@@ -18,7 +18,7 @@ def include_footer(the_links):
     for key in the_links:
         link_string += '<a href="' + the_links[key] + '">' + key + '</a>&nbsp;&nbsp;&nbsp;&nbsp;'
     footer = Template(foot_text)
-    return(footer.substitute(links=link_string))
+    return('</div>'+footer.substitute(links=link_string))
 
 def start_form(the_url, form_type="POST"):
     return('<form action="' + the_url + '" method="' + form_type + '">')
