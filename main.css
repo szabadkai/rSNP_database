@@ -1,77 +1,109 @@
-html {
-    background-color: #e6e9e9;
-    background-image: linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
-    background-image: -o-linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
-    background-image: -moz-linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
-    background-image: -webkit-linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
-    background-image: -ms-linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
+html, body, div{
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
+.topbar{
+    width: 100%;
+    background: #2c2c2c;
+    height: 40px;
+}
+
+
+.preserve{
+
+}
+
+@charset "utf-8";
+/* 52framework General StyleSheet - contains styles for all the HTML elements this framework supports */
 
 body {
-    margin: 5%;
-    padding: 2em 2em 4em;
-    font-family: source-sans-pro, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5em;
-    color: #545454;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-    -webkit-font-smoothing: antialiased;
-}
-.preserve {
-   white-space:pre-wrap;
+  background:#fff;
+  color:#000;
+  font:12px Arial, Helvetica, sans-serif;
+  position:relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #222;
-    font-weight: 600;
-    line-height: 1.3em;
+
+/* ** ** Common Addative Classes ** ** */
+.left, .float_left  { float:left    }
+.right, .float_right { float:right  }
+.clear { clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}
+.clear-left, .clear_left { clear:left; } .clear-right, .clear_right { clear:right; }
+.hide  { display:none   } .block {display:block !important;} .inline {display:inline !important;}
+
+.align_right    { text-align:right;   }
+.align_left     { text-align:left;    }
+.align_center   { text-align:center;  }
+.align_justify  { text-align:justify; }
+
+.bold {font-weight:600;}
+.italic {font-style:italic;}
+
+a { color:#525252;  }
+a:hover, a:focus { text-decoration:underline;}
+a:active, a:visited { }
+
+blockquote {
+        font-family: Georgia,"Times New Roman", Times, serif; 
+        margin:5px; 
+        padding:10px;
+        font-size:1.52em; 
+        color:#999; 
+        font-style:italic; 
+        line-height:1.3em; 
+        width:100%; 
+        quotes:none;
+    }
+    blockquote.left {border-right:1px dashed #ccc; width:35%;} /* float blockquote left, and set width */
+    blockquote.right {border-left:1px dashed #ccc; width:35%;} /* float blockquote right and set a width */
+
+/* ** ** Header Styles ** ** */
+h1, h2, h3, h4, h5 {margin:0 0 0.5em; line-height:1.1em;}
+h1 {    font-size:1.5em;} 
+h2 {    font-size:1.4em;} 
+h3 {    font-size:1.3em;} 
+h4 {    font-size:1.2em;} 
+h5 {    font-size:1.1em;} 
+h6 {    font-size:1.05em;}
+
+/* ** ** ul li's ** ** */
+ul{
+  list-style:outside disc;
+}
+ul,ol{
+  margin:0 0 1.5em 1.5em;
+  padding:0;
+}
+li ul,li ol{
+  padding:0;
+  margin:0 0 1.5em 1.5em;
 }
 
-h2 {
-    margin-top: 1.3em;
-}
 
-a {
-    color: #0083e8; 
+/* ** ** custom select color ** ** */
+::selection {
+    background: #525252; /* Safari */
+    }
+::-moz-selection {
+    background: #525252; /* Firefox */
+    color:#fff;
 }
+/* ** ** paragraph styling ** ** */
+p {margin:0 0 1.52em;}
 
-b, strong {
-    font-weight: 600;
+.input_field {
+    margin-left: 50px;
 }
-
-samp {
-    /* hide tutorial instructions so they don't show in the browser */
-    display: none;
-}
-
-img {
-    background: transparent;
-    border: 10px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    display: block;
-    margin: 1.3em auto;
-    max-width: 95%;
-    -webkit-animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
-}
-
 table{
-    max-width:1000p;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    font-size: 12px;
-    background: #fff;
-    width: 480px;
-    border-collapse: collapse;
-    text-align: left;
-    margin: 20px;
-    vertical-align: baseline;
-    display: table;
-    border-spacing: 2px;
-    border-color: gray;  
+    border-collapse:collapse;
 }
 
-th,tr {
-    border:1px solid black;
-} 
+table,td,th{
+    border: solid black 1px;
+    padding:5px;
+   }
