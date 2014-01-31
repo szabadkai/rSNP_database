@@ -51,4 +51,4 @@ with con:
             print "</tr>"
         
     print("</table></div>")   
-print(yate.include_footer())
+print(yate.include_footer(""))

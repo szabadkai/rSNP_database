@@ -18,18 +18,20 @@ print(yate.include_header(''))
 with con: 
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS 
+    cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
-                    TFBS.peak = ORTHOLOGS.peak""" % form_data)
+                    TFBS.peak = ORTHOLOGS.peak AND
+                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment ;""" % form_data)
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
         print "<th>%s</th>" % header[col]
-    print "</thead>"
+    print "<th>GEO</th></thead>"
     for row in rows:
         print "<tr>"
         for col in header_order:
             print "<th>%s</th>" % row[col]
+        print "<th><a href='%s'>LINK<a></th>" % row['http']    
         print "</tr>"
     else:
         pass
