@@ -63,7 +63,7 @@ blockquote {
     blockquote.right {border-left:1px dashed #ccc; width:35%;} /* float blockquote right and set a width */
 
 /* ** ** Header Styles ** ** */
-h1, h2, h3, h4, h5 {margin:0 0 0.5em; line-height:1.1em;}
+h1, h2, h3, h4, h5 {padding:20px; margin:0 0 0.5em; line-height:1.1em;}
 h1 {    font-size:1.5em;} 
 h2 {    font-size:1.4em;} 
 h3 {    font-size:1.3em;} 
