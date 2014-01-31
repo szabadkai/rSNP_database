@@ -29,9 +29,9 @@ print(yate.include_header(""))
 with con:
     print '<div class="input_field"><table>'
     print "<thead>"
-        for col in header_order:
-            print "<th>%s</th>" % header[col]
-        print "</thead>"
+    for col in header_order:
+        print "<th>%s</th>" % header[col]
+    print "</thead>"
         
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
