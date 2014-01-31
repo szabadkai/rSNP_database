@@ -31,8 +31,9 @@ with con:
                             WHERE RS.RS_num=%r AND 
                             TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
             rows = cur.fetchall()
-            print "<tr><th><a href='print_rsnp_data.py?id=%s'>%s</a></th>" % (str(rows[0][0]),str(rows[0][0]))
-            print "<th><a href='print_tfbs_data.py?id=%s'>%s</a></th></tr>" % (str(rows[0][1]),str(rows[0][1]))
+            for row in rows:
+                print "<tr><th><a href='print_rsnp_data.py?id=%s'>%s</a></th>" % (str(row[0]),str(row[0]))
+                print "<th><a href='print_tfbs_data.py?id=%s'>%s</a></th></tr>" % (str(row[1]),str(row[1]))
         except:
             pass
 print("</table><br>")       
