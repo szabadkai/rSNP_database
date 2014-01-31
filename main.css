@@ -112,6 +112,7 @@ table,td,th{
 }
 
 #sidebar{
+    margin-right:30px;
     width:200px;
-    float:left;
+    float:right;
 }
