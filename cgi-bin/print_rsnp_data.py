@@ -35,5 +35,5 @@ with con:
             print "<th>%s</th>" % row[col]
         print "</tr>"
     print("</tr></table></div>")   
-    print "<br><a href='print_matrix.py?id=%s'>show matrix</a>" % rows[0]['rs_ID']
+    print "<br><a href='print_matrix.py?id=%s'>show matrix</a>" % rows[0]["rs_ID"]
 print(yate.include_footer())
