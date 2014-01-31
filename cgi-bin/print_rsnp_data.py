@@ -28,6 +28,11 @@ print(yate.include_header(""))
 
 with con:
     print '<div class="input_field"><table>'
+    print "<thead>"
+        for col in header_order:
+            print "<th>%s</th>" % header[col]
+        print "</thead>"
+        
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
         cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID,TFBS.matrix_id
@@ -35,10 +40,7 @@ with con:
                         WHERE   RS_num='%s' AND 
                                 TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
         rows = cur.fetchall()
-        print "<thead>"
-        for col in header_order:
-            print "<th>%s</th>" % header[col]
-        print "</thead>"
+        
         for row in rows:
             row['matrix_id']="<a href='print_matrix.py?id=%s'>show matrix</a>" % (row['rs_ID'])
             row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % (row['RS_num'],row['RS_num'])
