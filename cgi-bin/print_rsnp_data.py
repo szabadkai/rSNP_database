@@ -10,7 +10,7 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 form_data = cgi.FieldStorage().getvalue('SNPs')
 
 header_order = ['rs_ID','TFBS_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','matrix_id'] 
-header={'rs_ID' :'SNP ID' ,'TFBS_ID' : 'TFBS' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','matrix_id':'M_ID'}
+header={'rs_ID' :'SNP ID' ,'TFBS_ID' : 'TFBS' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','matrix_id':'MATRIX'}
 
 print(yate.start_response())
 print(yate.include_header(""))  
