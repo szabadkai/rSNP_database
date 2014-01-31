@@ -17,10 +17,10 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT RS.*,MATRIX.*,TFBS.* 
                     FROM RS,MATRIX,TFBS 
-                    WHERE RS.rs_ID = %s AND 
+                    WHERE RS.rs_ID = %r AND 
                     TFBS.TFBS_ID=RS.TFBS_ID AND 
                     TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
     rows = cur.fetchall()
-    print "<p class='input_field preserve'>%s</p>" % rows[0]['matrix_bin'].replace('\n','<br>')
+    print "<p class='input_field preserve'>%s</p>" % rows[0]['matrix_bin']
     
 print(yate.include_footer())
