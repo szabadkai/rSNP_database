@@ -17,7 +17,7 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT RS.*,MATRIX.*,TFBS.* 
                     FROM RS,MATRIX,TFBS 
-                    WHERE RS.rs_ID = %r AND 
+                    WHERE RS.rs_ID = %s AND 
                     TFBS.TFBS_ID=RS.TFBS_ID AND 
                     TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
     rows = cur.fetchall()

@@ -29,7 +29,7 @@ with con:
     for row in rows:
         row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % (row['RS_num'],row['RS_num'])
         row['TFBS_ID']="<a href='print_tfbs_data.py?id=%s'>%s</a></th>" % (row['TFBS_ID'],row['TFBS_ID'])
-        row['matrix_id']="<a href='print_matrix.py?id=%s'>show matrix</a>" % (row['rs_ID'].strip("'"))
+        row['matrix_id']="<a href='print_matrix.py?id=%s'>show matrix</a>" % (row['rs_ID'].strip("'").strip('"'))
         print "<tr>"
         for col in header_order:
             print "<th>%s</th>" % row[col]
