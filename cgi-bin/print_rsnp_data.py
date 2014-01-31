@@ -17,7 +17,7 @@ print(yate.include_header(""))
 with con:
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID
+    cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID,TFBS.matrix_id
                     FROM    RS, TFBS
                     WHERE   RS_num='%s' AND 
                             TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
