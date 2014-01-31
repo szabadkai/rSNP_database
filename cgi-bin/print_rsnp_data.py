@@ -18,7 +18,7 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID
                     FROM    RS, TFBS
-                    WHERE   rs_ID='%s' AND 
+                    WHERE   RS_num='%s' AND 
                             TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
     rows = cur.fetchall()
     print "<thead>"
