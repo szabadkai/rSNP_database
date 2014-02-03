@@ -123,7 +123,7 @@ table,td,th{
 	-webkit-background-size: auto;
 	background-attachment: scroll;
 	background-clip: border-box;
-	background-color: rgb(119, 119, 119);
+	background-color: #777;
 	background-image: none;
 	background-origin: padding-box;
 	background-size: auto;
