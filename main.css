@@ -122,4 +122,5 @@ table,td,th{
 	line-height: 1.3;
 	border: 0;
 	vertical-align: baseline;
+	float:bottom;
 }
