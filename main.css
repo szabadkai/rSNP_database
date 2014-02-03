@@ -109,6 +109,7 @@ table,td,th{
 .container{
     margin-left: 30px;
     padding:10px;
+	min-height:1000px;
 }
 
 #sidebar{
