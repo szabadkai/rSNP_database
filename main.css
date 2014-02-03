@@ -117,7 +117,7 @@ table,td,th{
     width:200px;
     float:right;
 }
-#footer{
+.cathegories{
 	-webkit-background-clip: border-box;
 	-webkit-background-origin: padding-box;
 	-webkit-background-size: auto;
