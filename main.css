@@ -144,21 +144,19 @@ table,td,th{
 	border-top-style: solid;
 	border-top-width: 7px;
 	clear: both;
-	color: rgb(68, 68, 68);
+	color: white;
 	display: block;
 	font-family: Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif;
 	font-size: 13px;
-	height: 397.5625px;
-	line-height: 12.800000190734863px;
+	line-height: 12px;
 	margin-bottom: 0px;
 	margin-left: 0px;
 	margin-right: 0px;
 	margin-top: 30px;
-	padding-bottom: 15px;
+	padding-bottom: 0px;
 	padding-left: 15px;
-	padding-right: 15px;
+	padding-right: 0px;
 	padding-top: 15px;
 	text-align: center;
 	vertical-align: baseline;
-	width: 1331px;
 }
