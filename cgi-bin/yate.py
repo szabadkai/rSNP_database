@@ -11,6 +11,9 @@ def include_header(the_title):
     header = Template(head_text)
     return(header.substitute(title=the_title)+'<div class="container">')
 
+def add_script(url):
+    return('<script type="text/javascript" src="'+ url +'"></script>')
+
 def include_footer(the_links):
     with open('../templates/footer.html') as footf:
         foot_text = footf.read()
