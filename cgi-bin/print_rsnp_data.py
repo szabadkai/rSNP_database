@@ -43,8 +43,8 @@ with con:
         
         for row in rows:
             row['matrix_id']="<a href='print_matrix.py?id=%s'>show matrix</a>" % (row['rs_ID'])
-            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % (row['RS_num'],row['RS_num'])
-            row['TFBS_ID']="<a href='print_tfbs_data.py?id=%s'>%s</a></th>" % (row['TFBS_ID'],row['TFBS_ID'])
+            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
+            row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">%s</a></div>" % ((row['TFBS_ID'],) * 4)
             print "<tr>"
             for col in header_order:
                 print "<th>%s</th>" % row[col]
