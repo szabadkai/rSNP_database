@@ -1,7 +1,7 @@
 function tfbsdata(tfbsid){
-   div = document.getElementsById(tfbsid)[0]
-   div.width = 200
-   div.height = 200
+   div = document.getElementById(tfbsid);
+   div.style.width  = 200 + "px";
+   div.style.height = 200 + "px";
 }
 
 window.onload = function(){
