@@ -28,10 +28,10 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 
 with con:
     print '<div class="input_field"><table>'
-    print "<thead>"
+    print "<thead><tr>"
     for col in header_order:
         print "<th>%s</th>" % header[col]
-    print "</thead>"
+    print "</tr></thead>"
         
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
