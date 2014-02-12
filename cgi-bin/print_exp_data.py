@@ -6,8 +6,8 @@ import yate
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','organism','chr','start','stop','target_perc','p']
-header = {'TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif','organism':'Organism','chr':'chr','start':'start','stop':'stop','target_perc':'target%','p':'P'}
+header_order = ['TFBS_ID','TFBS.peak','de_novo_motif','organism','chr','start','stop','target_perc','p']
+header = {'TFBS_ID':'TFBS','TFBS.peak':'PEAK','de_novo_motif':'motif','organism':'Organism','chr':'chr','start':'start','stop':'stop','target_perc':'target%','p':'P'}
 
 form_data = cgi.FieldStorage().getvalue('exp')
 
@@ -21,7 +21,6 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS.experiment='%s' AND 
-                    
                     CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment limit 1001 ;""" % form_data)
     rows = cur.fetchall()
     print "<thead>"
