@@ -15,7 +15,6 @@ form_data = cgi.FieldStorage().getvalue('exp')
 print(yate.start_response())
 
 with con: 
-    print '<table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS 
                     WHERE TFBS.experiment='%s' order by chr ;""" % form_data)
@@ -23,7 +22,8 @@ with con:
 
     for row in rows:
         for col in header_order:
-            print "%s<br>" % row[col]
+            print "%s", % row[col]
+        print ""
     else:
         pass
 print(yate.include_footer({""}))
