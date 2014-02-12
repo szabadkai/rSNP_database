@@ -21,7 +21,8 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS.experiment='%s' AND 
-                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment limit 10;""" % form_data)
+                    TFBS.peak = ORTHOLOGS.peak AND
+                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment;""" % form_data)
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
@@ -37,6 +38,5 @@ with con:
         pass
     
     print("</table></div><br>")
-    print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
 print(yate.include_footer({""}))
 
