@@ -1,13 +1,13 @@
-#!/usr/bin/env python
-
+import tempfile
+from flask import send_file
 import MySQLdb as mdb
 import cgi
 import yate
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['TFBS_ID','peak','de_novo_motif','organism','chr','start','stop','target_perc','p']
-header = {'TFBS_ID':'TFBS','peak':'PEAK','de_novo_motif':'motif','organism':'Organism','chr':'chr','start':'start','stop':'stop','target_perc':'target%','p':'P'}
+header_order = ['chr','start','stop','peak']
+header = {'peak':'PEAK','chr':'chr','start':'start','stop':'stop'}
 
 form_data = cgi.FieldStorage().getvalue('exp')
 
@@ -37,6 +37,5 @@ with con:
         pass
     
     print("</table></div><br>")
-    <a href='export2bed.py?exp=%s ' % (form_data,form_data) download="%s.bed">'download bed file'</a>
+    <a href='export2bed.py'>'download bed file'</a>
 print(yate.include_footer({""}))
-
