@@ -21,7 +21,7 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS.experiment='%s' AND 
-                    TFBS.peak = ORTHOLOGS.peak AND
+                    
                     CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment;""" % form_data)
     rows = cur.fetchall()
     print "<thead>"
