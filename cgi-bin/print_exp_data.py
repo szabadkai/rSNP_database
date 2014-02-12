@@ -21,7 +21,7 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,HTTP 
                     WHERE TFBS.experiment='%s' AND 
-                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr limit 1 ;""" % form_data)
+                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr limit 1001 ;""" % form_data)
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
@@ -37,6 +37,5 @@ with con:
         pass
     
     print("</table></div><br>")
-    <a href='export2bed.py?exp=%s ' % (form_data,form_data) download="%s.bed">'download bed file'</a>
 print(yate.include_footer({""}))
 
