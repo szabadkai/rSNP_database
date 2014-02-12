@@ -1,5 +1,3 @@
-import tempfile
-from flask import send_file
 import MySQLdb as mdb
 import cgi
 import yate
@@ -14,8 +12,7 @@ form_data = cgi.FieldStorage().getvalue('exp')
 
 
 print(yate.start_response())
-print(yate.include_header(''))  
-print(yate.para(form_data))
+
 with con: 
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
@@ -23,10 +20,7 @@ with con:
                     WHERE TFBS.experiment='%s' AND 
                     CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr ;""" % form_data)
     rows = cur.fetchall()
-    print "<thead>"
-    for col in header_order:
-        print "<th>%s</th>" % header[col]
-    print "<th>GEO</th></thead>"
+
     for row in rows:
         print "<tr>"
         for col in header_order:
@@ -37,5 +31,4 @@ with con:
         pass
     
     print("</table></div><br>")
-    <a href='export2bed.py'>'download bed file'</a>
 print(yate.include_footer({""}))
