@@ -37,5 +37,7 @@ with con:
         pass
     
     print("</table></div><br>")
+    print("<a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) )
+
 print(yate.include_footer({""}))
 
