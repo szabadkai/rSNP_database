@@ -20,12 +20,8 @@ with con:
     rows = cur.fetchall()
 
     for row in rows:
-        print "<tr>"
         for col in header_order:
-            print "<th>%s</th>" % row[col]
-        print "</tr>"
+            print "%s<br>" % row[col]
     else:
         pass
-    
-    print("</table>")
 print(yate.include_footer({""}))
