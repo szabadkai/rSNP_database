@@ -6,7 +6,7 @@ import yate
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['chr','start','stop','peak']
+header_order = ['chr','peak_start','peak_stop']
 
 form_data = cgi.FieldStorage().getvalue('exp')
 
@@ -22,9 +22,7 @@ with con:
     rows = cur.fetchall()
 
     for row in rows:
-        for col in header_order:
-            print ("%s" % row[col]),
-        print ""
+        print "%s\t%s\t%s" % (row['chr'],row['peak_start'],row['peak_stop'])
     else:
         pass
 print(yate.include_footer({""}))
