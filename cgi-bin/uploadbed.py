@@ -30,7 +30,7 @@ tmpname = putToTmp(bedfile) # get the name of the tmp file
 print(yate.start_response())
 
 userfile = BedTool(tmpname)
-mypath='/User/levente//DATA/BED/'
+mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
 for bed in onlyfiles:
