@@ -23,7 +23,7 @@ def putToTmp(f):
 # processing the uploaded file
 form_data = cgi.FieldStorage()
 bedfile = form_data['bed']
-jaccard = form_data['jaccard']
+jaccard = float(form_data['jaccard'])
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
