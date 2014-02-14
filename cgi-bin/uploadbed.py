@@ -38,7 +38,8 @@ for bed in onlyfiles:
 	jac=BedTool.jaccard(userfile,a)
 	if jac['jaccard']>0.8:
 		print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union'],jac['jaccard'])
-
+	a.close()	
+userfile.close()
 # processing bed file
 
 # clean up mess
