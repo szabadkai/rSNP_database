@@ -36,7 +36,8 @@ onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 for bed in onlyfiles:
 	a = BedTool(mypath+bed)
 	jac=BedTool.jaccard(userfile,a)
-	print jac['intersection']+'\t'+jac['union']+'\t'+jac['jaccard']
+	if jac['jaccard']>0.8:
+		print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union'],jac['jaccard'])
 
 # processing bed file
 
