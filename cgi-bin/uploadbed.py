@@ -5,6 +5,9 @@ import cgi
 import yate
 import tempfile
 import os
+from pybedtools import BedTool
+from os import listdir
+from os.path import isfile, join
 
 def putToTmp(f):
 	# upload a file and store it in tmp with unique name (avoid name collision)
@@ -26,7 +29,14 @@ tmpname = putToTmp(bedfile) # get the name of the tmp file
 # HTML output
 print(yate.start_response())
 
-print tmpname
+userfile = BedTool(tmpname)
+mypath='/var/www/rsnpdb/DATA/BED/'
+onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
+
+for bed in onlyfiles:
+	a = BedTool(bed)
+	jac=BedTool.jaccard(userfile,a)
+	print jac['intersection']+'\t'+jac['union']+'\t'+jac['jaccard']
 
 # processing bed file
 
