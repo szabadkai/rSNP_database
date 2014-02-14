@@ -30,7 +30,7 @@ tmpname = putToTmp(bedfile) # get the name of the tmp file
 print(yate.start_response())
 
 userfile = BedTool(tmpname)
-mypath='/var/www/rsnpdb/DATA/BED/'
+mypath='/User/levente//DATA/BED/'
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
 for bed in onlyfiles:
@@ -38,8 +38,7 @@ for bed in onlyfiles:
 	jac=BedTool.jaccard(userfile,a)
 	if jac['jaccard']>0.8:
 		print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union'],jac['jaccard'])
-	a.close()	
-userfile.close()
+
 # processing bed file
 
 # clean up mess
