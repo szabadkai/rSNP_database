@@ -34,7 +34,7 @@ mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
 for bed in onlyfiles:
-	a = BedTool(bed)
+	a = BedTool(mypath+bed)
 	jac=BedTool.jaccard(userfile,a)
 	print jac['intersection']+'\t'+jac['union']+'\t'+jac['jaccard']
 
