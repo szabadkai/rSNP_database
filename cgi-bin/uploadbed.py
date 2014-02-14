@@ -23,6 +23,7 @@ def putToTmp(f):
 # processing the uploaded file
 form_data = cgi.FieldStorage()
 bedfile = form_data['bed']
+jaccard = float(form_data['jaccard'])
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
@@ -38,7 +39,7 @@ for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
-		if jac['jaccard']>0.08:
+		if jac['jaccard']>jaccard:
 			print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union-intersection'],jac['jaccard'])
 	except:
 		print "problem in :"+bed
