@@ -6,8 +6,6 @@ import yate
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['chr','peak_start','peak_stop']
-
 form_data = cgi.FieldStorage().getvalue('exp')
 
 
@@ -15,7 +13,6 @@ form_data = cgi.FieldStorage().getvalue('exp')
 print(yate.start_response())
 
 with con: 
-    print '<table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS 
                     WHERE TFBS.experiment='%s' order by chr ;""" % form_data)
