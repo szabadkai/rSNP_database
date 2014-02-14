@@ -37,8 +37,8 @@ for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
-		if jac['jaccard']>0.8:
-			print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union'],jac['jaccard'])
+#		if jac['jaccard']>0.08:
+		print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union-intersection'],jac['jaccard'])
 	except:
 		print "problem in :"+bed
 		pass
