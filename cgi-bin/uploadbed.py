@@ -34,10 +34,14 @@ mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
 for bed in onlyfiles:
-	a = BedTool(mypath+bed)
-	jac=BedTool.jaccard(userfile,a)
-	if jac['jaccard']>0.8:
-		print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union'],jac['jaccard'])
+	try:
+		a = BedTool(mypath+bed)
+		jac=BedTool.jaccard(userfile,a)
+		if jac['jaccard']>0.8:
+			print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union'],jac['jaccard'])
+	except:
+		print "problem in :"+bed
+		pass
 
 # processing bed file
 
