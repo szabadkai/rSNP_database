@@ -100,13 +100,11 @@ p {margin:0 0 1.52em;}
 
 table{
     border-collapse:collapse;
-
 }
 
 table,td,th{
-  border: solid black 1px;
-  padding:5px;
-  font:  'Courier New', Courier, monospace;
+    border: solid black 1px;
+    padding:5px;
    }
 .container{
     margin-left: 30px;
