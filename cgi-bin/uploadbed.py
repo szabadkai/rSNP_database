@@ -41,10 +41,12 @@ for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
+		break
 		if jac['jaccard']>jaccard:
 			print "<a href='print_exp_data.py?exp=%s'>%s</a>\t%s\t%s\t%s<br>"% (bed,bed,jac['intersection'],jac['union-intersection'],jac['jaccard'])
 	except:
 		print "problem in :"+bed
+		break
 		pass
 
 print(yate.include_footer({""}))
