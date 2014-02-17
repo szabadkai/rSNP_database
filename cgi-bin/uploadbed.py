@@ -34,18 +34,16 @@ userfile = BedTool(tmpname)
 mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
-print"The following experiments show higher jaccard score than <strong>%s</strong>:\n" % jaccard
+print "<p>The following experiments show higher jaccard score than <strong>%s</strong>:</p>" % jaccard
 
 for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
-			print "%s\t%s<br>"% (bed,jac['jaccard'])
-			break
+			print "<p>%s\t%s</p>"% (bed,jac['jaccard'])
 	except:
 		print "problem in :"+bed
-		break
 		pass
 
 print(yate.include_footer({""}))
