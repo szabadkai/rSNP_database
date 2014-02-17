@@ -31,7 +31,7 @@ print(yate.start_response())
 print(yate.include_header(''))  
 print type(bedfile)
 userfile = BedTool(tmpname)
-mypath='/var/www/rSNPdb/DATA/BED/'
+mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
 print"The following experiments show higher jaccard score than <strong>%s</strong>:\n" % jaccard
