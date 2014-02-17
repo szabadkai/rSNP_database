@@ -45,7 +45,7 @@ for bed in onlyfiles:
 	except:
 		print "problem in :"+bed
 		pass
-print"</table"
+print"</table>"
 print(yate.include_footer({""}))
 
 # clean up mess
