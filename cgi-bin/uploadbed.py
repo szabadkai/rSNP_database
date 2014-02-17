@@ -33,7 +33,7 @@ print(yate.start_response())
 print(yate.include_header(''))  
 
 userfile = BedTool(tmpname)
-mypath=os.getcwd()+'/DATA/BED/'
+mypath=os.getcwd().split('/')[:-1]+'/DATA/BED/'
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
 for bed in onlyfiles:
