@@ -41,7 +41,7 @@ for bed in onlyfiles:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
-			print "<p>%s\t%s</p>"% (bed,jac['jaccard'])
+			print "<a href=print_exp_data.py?exp=%s>%s</a>%s"% (bed,bed,jac['jaccard'])
 	except:
 		print "problem in :"+bed
 		pass
