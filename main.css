@@ -104,10 +104,9 @@ table{
 }
 
 table,td,th{
-    border: solid black 1px;
-    padding:5px;
-    font: monospace;
-
+  border: solid black 1px;
+  padding:5px;
+  font:  'Courier New', Courier, monospace;
    }
 .container{
     margin-left: 30px;
