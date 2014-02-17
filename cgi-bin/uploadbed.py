@@ -34,7 +34,7 @@ userfile = BedTool(tmpname)
 mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
-print "<p>The following experiments show higher jaccard score than <strong>%s</strong>:</p>" % jaccard
+print "<p>The following experiments show higher jaccard score than <strong>%s</strong> with your experiment:</p>" % jaccard
 print "<table><thead><tr><th>Experiment</th><th>jaccard score</th></tr></thead>"
 for bed in onlyfiles:
 	try:
