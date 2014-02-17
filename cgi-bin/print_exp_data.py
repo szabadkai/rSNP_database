@@ -6,8 +6,8 @@ import yate
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['TFBS_ID','peak','de_novo_motif','organism','chr','start','stop','target_perc','p']
-header = {'TFBS_ID':'TFBS','peak':'PEAK','de_novo_motif':'motif','organism':'Organism','chr':'chr','start':'start','stop':'stop','target_perc':'target%','p':'P'}
+header_order = ['organism','disease','experiment','de_novo_motif']
+header = {'de_novo_motif':'motif','organism':'Organism','disease':'disease', 'experiment':'experiment'}
 
 form_data = cgi.FieldStorage().getvalue('exp')
 
