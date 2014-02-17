@@ -6,8 +6,6 @@ import yate
 import tempfile
 import os
 from pybedtools import BedTool
-from os import listdir
-from os.path import isfile, join
 
 def putToTmp(f):
 	# upload a file and store it in tmp with unique name (avoid name collision)
@@ -34,7 +32,7 @@ print(yate.include_header(''))
 
 userfile = BedTool(tmpname)
 mypath='/var/wwww/rsnpdb/DATA/BED/'
-onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
+onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
 print"The following experiments show higher jaccard score than <strong>%s</strong>:" % jaccard
 
