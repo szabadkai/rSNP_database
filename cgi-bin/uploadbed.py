@@ -21,7 +21,7 @@ def putToTmp(f):
 # processing the uploaded file
 form_data = cgi.FieldStorage()
 bedfile = form_data['bed']
-jaccard = form_data.getvalue('jaccard')
+#jaccard = form_data.getvalue('jaccard')
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
@@ -34,7 +34,7 @@ userfile = BedTool(tmpname)
 mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
-print"The following experiments show higher jaccard score than <strong>%s</strong>:" % jaccard
+#print"The following experiments show higher jaccard score than <strong>%s</strong>:" % jaccard
 
 for bed in onlyfiles:
 	try:
