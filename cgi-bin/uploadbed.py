@@ -35,17 +35,17 @@ mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
 print "<p>The following experiments show higher jaccard score than <strong>%s</strong>:</p>" % jaccard
-
+print "<table><thead><tr><th>Experiment</th><th>jaccard score</th></tr></thead>"
 for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
-			print "<a href='print_exp_data.py?exp=%s'>%s</a>%s"% (str(bed).split('.')[0],bed,jac['jaccard'])
+			print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,jac['jaccard'])
 	except:
 		print "problem in :"+bed
 		pass
-
+print"</table"
 print(yate.include_footer({""}))
 
 # clean up mess
