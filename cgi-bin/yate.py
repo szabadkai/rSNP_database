@@ -7,7 +7,7 @@ def start_response(resp="text/html"):
     return('Content-type: ' + resp + '\n')
 
 def include_header(the_title):
-    with open('/'+'/'.join(os.getcwd().split('/')[:-1])+'/templates/header.html') as headf:
+    with open('../templates/header.html') as headf:
         head_text = headf.read()
     header = Template(head_text)
     return(header.substitute(title=the_title)+'<div class="container">')
@@ -16,7 +16,7 @@ def add_script(url):
     return('<script type="text/javascript" src="'+ url +'"></script>')
 
 def include_footer(the_links):
-    with open('/'+'/'.join(os.getcwd().split('/')[:-1])+'/templates/footer.html') as footf:
+    with open('../templates/footer.html') as footf:
         foot_text = footf.read()
     link_string = ''
     for key in the_links:

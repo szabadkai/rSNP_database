@@ -23,7 +23,7 @@ def putToTmp(f):
 # processing the uploaded file
 form_data = cgi.FieldStorage()
 bedfile = form_data['bed']
-jaccard = form_data['jaccard']
+#jaccard = form_data['jaccard']
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
@@ -33,8 +33,9 @@ print(yate.start_response())
 print(yate.include_header(''))  
 
 userfile = BedTool(tmpname)
-mypath='/'+'/'.join(os.getcwd().split('/')[:-1])+'/DATA/BED/'
+mypath='/var/wwww/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
+
 print"The following experiments show higher jaccard score than <strong>%s</strong>:" % jaccard
 
 for bed in onlyfiles:
@@ -42,7 +43,7 @@ for bed in onlyfiles:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		break
-		if jac['jaccard']>jaccard:
+		if jac['jaccard']>0.4:
 			print "<a href='print_exp_data.py?exp=%s'>%s</a>\t%s\t%s\t%s<br>"% (bed,bed,jac['intersection'],jac['union-intersection'],jac['jaccard'])
 	except:
 		print "problem in :"+bed
