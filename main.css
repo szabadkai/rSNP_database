@@ -100,12 +100,14 @@ p {margin:0 0 1.52em;}
 
 table{
     border-collapse:collapse;
-    font: monospace;
+
 }
 
 table,td,th{
     border: solid black 1px;
     padding:5px;
+    font: monospace;
+
    }
 .container{
     margin-left: 30px;
