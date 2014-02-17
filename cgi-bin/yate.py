@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from string import Template
+import os
 
 def start_response(resp="text/html"):
     return('Content-type: ' + resp + '\n')

@@ -6,8 +6,6 @@ import yate
 import tempfile
 import os
 from pybedtools import BedTool
-from os import listdir
-from os.path import isfile, join
 
 def putToTmp(f):
 	# upload a file and store it in tmp with unique name (avoid name collision)
@@ -28,26 +26,28 @@ bedfile = form_data['bed']
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
 # HTML output
+
 print(yate.start_response())
 print(yate.include_header(''))  
 
 userfile = BedTool(tmpname)
-mypath='/var/www/rsnpdb/DATA/BED/'
-onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
+mypath='/var/wwww/rsnpdb/DATA/BED/'
+onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
+
+print"The following experiments show higher jaccard score than <strong>%s</strong>:" % jaccard
 
 for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>0.4:
-			print "%s\t%s\t%s\t%s<br>"% (bed,jac['intersection'],jac['union-intersection'],jac['jaccard'])
+			print "%s\t%s<br>"% (bed,jac['jaccard'])
 	except:
 		print "problem in :"+bed
 		pass
 
-# processing bed file
+print(yate.include_footer({""}))
 
 # clean up mess
 os.remove(tmpname)
-print(yate.include_footer({""}))
 
