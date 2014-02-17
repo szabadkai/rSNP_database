@@ -4,6 +4,6 @@ function tfbsdata(tfbsid){
    div.style.height = 200 + "px";
 }
 
-window.onload = function(){
-   alert("It is working");
-}
+//window.onload = function(){
+//  alert("It is working");
+//}
