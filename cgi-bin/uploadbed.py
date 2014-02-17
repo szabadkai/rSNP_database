@@ -21,7 +21,7 @@ def putToTmp(f):
 # processing the uploaded file
 form_data = cgi.FieldStorage()
 bedfile = form_data['bed']
-#jaccard = form_data.getvalue('jaccard')
+jaccard = float(form_data.getvalue('jaccard'))
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
@@ -29,21 +29,23 @@ tmpname = putToTmp(bedfile) # get the name of the tmp file
 
 print(yate.start_response())
 print(yate.include_header(''))  
-
+print type(bedfile)
 userfile = BedTool(tmpname)
-mypath='/var/www/rsnpdb/DATA/BED/'
+mypath='/var/www/rSNPdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 
-#print"The following experiments show higher jaccard score than <strong>%s</strong>:" % jaccard
+print"The following experiments show higher jaccard score than <strong>%s</strong>:\n" % jaccard
 
 for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
-		if jac['jaccard']>0.4:
+		if jac['jaccard']>jaccard:
 			print "%s\t%s<br>"% (bed,jac['jaccard'])
+			break
 	except:
 		print "problem in :"+bed
+		break
 		pass
 
 print(yate.include_footer({""}))
