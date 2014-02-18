@@ -23,6 +23,13 @@ form_data = cgi.FieldStorage()
 bedfile = form_data['bed']
 jaccard = float(form_data.getvalue('jaccard'))
 
+if type(bedfile) == None or type(jaccard) == None:
+	print(yate.start_response())
+	print(yate.include_header(''))  
+	print(yate.para('Missing file or jaccard score! Try again! :)'))
+	print(yate.include_footer({""}))
+	exit()
+
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
 # HTML output
