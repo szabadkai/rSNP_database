@@ -19,8 +19,8 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 field = cgi.FieldStorage().getvalue('SNPs')
 
-header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases'] 
-header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs'}
+header_order = ['rs_ID','TFBS_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','matrix_id'] 
+header={'rs_ID' :'SNP ID' ,'TFBS_ID' : 'TFBS' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','matrix_id':'MATRIX'}
 
 print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
@@ -35,8 +35,10 @@ with con:
         
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
-        cur.execute(""" SELECT  *    FROM    RS
-                        WHERE   RS_num='%s' """ % form_data)
+        cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID,TFBS.matrix_id
+                        FROM    RS, TFBS
+                        WHERE   RS_num='%s' AND 
+                                TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
         rows = cur.fetchall()
         
         for row in rows:
