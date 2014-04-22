@@ -1,8 +1,8 @@
-function tfbsdata(tfbsid){
-   div = document.getElementById(tfbsid);
-   div.style.width  = 200 + "px";
-   div.style.height = 200 + "px";
-}
+// function tfbsdata(tfbsid){
+//    div = document.getElementById(tfbsid);
+//    div.style.width  = 200 + "px";
+//    div.style.height = 200 + "px";
+// }
 
 //window.onload = function(){
 //  alert("It is working");
