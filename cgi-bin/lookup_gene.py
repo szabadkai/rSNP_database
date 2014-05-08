@@ -21,7 +21,7 @@ with con:
 
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT  *    FROM    TFBS,GENE
-                WHERE  GENE.gene = '%s' AND 
+                WHERE  GENE.gene like '%%s%' AND 
                 GENE.TFBS_ID = TFBS.TFBS_ID """ % form_data)
     rows = cur.fetchall()
     
