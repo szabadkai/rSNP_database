@@ -21,10 +21,9 @@
    <div class="container">
   <form action="./cgi-bin/print_rsnp_data.py" method="POST" enctype="application/x-www-form-urlencoded">
   Please let us know whitch SNP you're interested in? ( use rs# notation! )<br>
-  <textarea id="seq" class="reset" rows="3" cols="80" name="SNPs">rs1000002 rs1000016 rs10000171 rs10000226  rs10000232"</textarea>
+  <textarea id="seq" class="reset" rows="3" cols="80" name="SNPs">rs1000002 rs1000016 rs10000171 rs10000226  rs10000232"</textarea><br>
   <input type=submit value="Select"></form>
  <br><br>
-<p>OR select experiment!</p>
   <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
     <select id="exp" name="exp" >
                <option value="SEM_cancer_HOXA9">SEM_cancer_HOXA9</option>    
@@ -514,7 +513,13 @@
    Upload you BED file to compare with other Chip-seq experiments.<br>
     <input type="file" id="bed" name="bed" value="Upload BED file">
     <input type="text" id="jaccard" name="jaccard">
-   <input type="submit" value="Upload and run analysis">
+   <input type="submit" value="Upload and run analysis"><br><br><br>
+
+   <form action="./cgi-bin/lookup_gene.py" enctype="multipart/form-data" method="POST">
+   Choose your gene of interest!<br>
+   <input type="text" id="gene" name="gene">
+   <input type="submit" value="submit">
+
    </form>
    </div>
 </body></html>
