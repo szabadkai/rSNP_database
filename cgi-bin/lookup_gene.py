@@ -15,9 +15,7 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 
 with con:
     print '<div class="input_field"><table>'
-    print "<thead><tr>"
-    for col in header_order:
-        print "<th>%s</th>" % header[col]
+    print "<thead><tr>GENES"
     print "</tr></thead>"
         
 
