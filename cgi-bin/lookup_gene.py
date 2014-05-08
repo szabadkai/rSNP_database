@@ -9,9 +9,6 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 form_data = cgi.FieldStorage().getvalue('gene')
 
-header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases'] 
-header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs'}
-
 print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
 
