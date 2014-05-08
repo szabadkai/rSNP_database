@@ -30,6 +30,5 @@ with con:
         print "<tr>"
         print "<th>%s</th>" % row['TFBS_ID']
         print "</tr>"
-        
     print("</table></div>")   
 print(yate.include_footer(""))
