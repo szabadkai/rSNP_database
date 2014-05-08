@@ -4,6 +4,16 @@ import MySQLdb as mdb
 import cgi
 import yate
 
+def split_input(field):
+    a=[]
+    b=[]
+    for i in field.split(','):
+        a.append(i.strip())
+    for i in a:
+        for c in i.split():
+            b.append(c.strip())
+    return b    
+
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 header_order = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','organism','chr','start','stop','target_perc','p']
@@ -38,5 +48,42 @@ with con:
     
     print("</table></div><br>")
     print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
+
+    header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases'] 
+    header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs'}
+
+    print '<div class="input_field"><table>'
+    print "<thead><tr>"
+    for col in header_order:
+        print "<th>%s</th>" % header[col]
+    print "</tr></thead>"
+        
+    cur = con.cursor(mdb.cursors.DictCursor)
+    cur.execute(""" SELECT * FROM TFBS,RS 
+        WHERE TFBS.TFBS_ID='%s' AND 
+        TFBS.TFBS_ID = RS.TFBS_ID""" % form_data)
+
+    rows = cur.fetchall()
+        
+    for row in rows:
+        row['matrix_id']="<a href='print_matrix.py?id=%s'>show matrix</a>" % (row['rs_ID'])
+        row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
+        row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">%s</a></div>" % ((row['TFBS_ID'],) * 4)
+        print "<tr>"
+        for col in header_order:
+            print "<th>%s</th>" % row[col]
+        print "</tr>"
+        
+    print("</table></div>")   
+
+
+
+    cur.execute(""" SELECT * FROM TFBS,RS 
+                    WHERE TFBS.TFBS_ID='%s' AND 
+                    TFBS.TFBS_ID = RS.TFBS_ID""" % form_data)
+    rows = cur.fetchall()
+
 print(yate.include_footer({""}))
+
+
 
