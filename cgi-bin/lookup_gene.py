@@ -20,9 +20,7 @@ with con:
         
 
     cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT  *    FROM    TFBS,GENE
-                WHERE  GENE.gene LIKE '%s%' AND 
-                GENE.TFBS_ID = TFBS.TFBS_ID """ % form_data.upper())
+    cur.execute( "SELECT  *    FROM    TFBS,GENE WHERE  GENE.gene LIKE '%"+form_data.upper()+"%' AND  GENE.TFBS_ID = TFBS.TFBS_ID " )
     rows = cur.fetchall()
     
     for row in rows:
