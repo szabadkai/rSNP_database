@@ -30,7 +30,6 @@
       <?php
       $txt_file    = file_get_contents('./DATA/exp.txt');
       $rows        = explode("\n", $txt_file);
-      array_shift($rows);
 
       foreach($rows as $row => $data){
          //get row data
