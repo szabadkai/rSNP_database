@@ -8,14 +8,14 @@
     </head>
     <body>
    <div class="topbar">
-   <div class="logo">
-  <a href="http://emboss.abc.hu/rsnpdb/"><img src="logo2.png" alt="logo-rsnpdb" height="40"></a>
-   </div>
+      <div class="logo">
+         <a href="http://emboss.abc.hu/rsnpdb/"><img src="logo2.png" alt="logo-rsnpdb" height="40"></a>
+      </div>
    </div>
    <div>
-   <p id="sidebar">
-   <?php echo file_get_contents('./DATA/sidebar.txt'); ?>
-   </p>
+      <p id="sidebar">
+         <?php echo file_get_contents('./DATA/sidebar.txt'); ?>
+      </p>
    </div>
   
    <div class="container">
