@@ -31,7 +31,7 @@
       $txt_file    = file_get_contents('./DATA/exp.txt');
       $rows        = explode("\n", $txt_file);
 
-      foreach($rows as $row => $data){
+      foreach($rows as $row){
          //get row data
          echo $row;
       }
