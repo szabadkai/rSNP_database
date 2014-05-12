@@ -26,6 +26,7 @@
  <br><br>
   <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
    <select id="exp" name="exp" >
+
       <?php
       $txt_file    = file_get_contents('./DATA/exp.txt');
       $rows        = explode("\n", $txt_file);
@@ -33,9 +34,10 @@
 
       foreach($rows as $row => $data){
          //get row data
-         echo $row
+         echo $row;
       }
       ?>
+
    </select>  
      <input type=submit value="Select"></form>
    <br><br>
