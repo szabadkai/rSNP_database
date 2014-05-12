@@ -26,6 +26,7 @@ with con:
     for row in rows:
         row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">%s</a></div>" % ((row['TFBS_ID'],) * 4)
         print "<tr>"
+        print "<th>%s</th>" % row['gene']
         print "<th>%s</th>" % row['TFBS_ID']
         print "</tr>"
     print("</table></div>")   
