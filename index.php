@@ -21,7 +21,7 @@
    <div class="container">
   <form action="./cgi-bin/print_rsnp_data.py" method="POST" enctype="application/x-www-form-urlencoded">
   Please let us know whitch SNP you're interested in? ( use rs# notation! )<br>
-  <textarea id="seq" class="reset" rows="3" cols="80" name="SNPs">rs1000002 rs1000016 rs10000171 rs10000226  rs10000232"</textarea><br>
+  <textarea id="seq" class="reset" rows="3" cols="80" name="SNPs">rs1000002 rs1000016 rs10000171 rs10000226  rs10000232</textarea><br>
   <input type=submit value="Select"></form>
  <br><br>
   <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
