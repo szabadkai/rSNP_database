@@ -47,7 +47,7 @@ scores=dict()
 print "<p>The following experiments show higher jaccard score than <strong>%s</strong> with your experiment:</p>" % jaccard
 print "<table><thead><tr><th>Experiment</th><th>jaccard score</th></tr></thead>"
 for bed in onlyfiles:
-		a = BedTool(mypath+bed)
+		a = BedTool(mypath+bed).sort()
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
 			# print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,jac['jaccard'])
