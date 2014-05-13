@@ -23,7 +23,7 @@ form_data = cgi.FieldStorage()
 
 try:
 	bedfile = form_data['bed']
-	jaccard = float(form_data.getvalue('jaccard'))
+	jaccard = float(form_data.getvalue('jaccard').replace(',','.'))
 except:	
 	print(yate.start_response())
 	print(yate.include_header(''))  
