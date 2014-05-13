@@ -1,3 +1,118 @@
+html, body, div{
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+.topbar{
+    width: 100%;
+    background: #2c2c2c;
+    height: 40px;
+}
+
+
+.preserve{
+    white-space:pre-wrap;
+}
+
+@charset "utf-8";
+/* 52framework General StyleSheet - contains styles for all the HTML elements this framework supports */
+
+body {
+  background:#fff;
+  color:#000;
+  font:12px Arial, Helvetica, sans-serif;
+  position:relative;
+}
+
+
+/* ** ** Common Addative Classes ** ** */
+.left, .float_left  { float:left    }
+.right, .float_right { float:right  }
+.clear { clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}
+.clear-left, .clear_left { clear:left; } .clear-right, .clear_right { clear:right; }
+.hide  { display:none   } .block {display:block !important;} .inline {display:inline !important;}
+
+.align_right    { text-align:right;   }
+.align_left     { text-align:left;    }
+.align_center   { text-align:center;  }
+.align_justify  { text-align:justify; }
+
+.bold {font-weight:600;}
+.italic {font-style:italic;}
+
+a { color:#525252;  }
+a:hover, a:focus { text-decoration:underline;}
+a:active, a:visited { }
+
+blockquote {
+        font-family: Georgia,"Times New Roman", Times, serif; 
+        margin:5px; 
+        padding:10px;
+        font-size:1.52em; 
+        color:#999; 
+        font-style:italic; 
+        line-height:1.3em; 
+        width:100%; 
+        quotes:none;
+    }
+    blockquote.left {border-right:1px dashed #ccc; width:35%;} /* float blockquote left, and set width */
+    blockquote.right {border-left:1px dashed #ccc; width:35%;} /* float blockquote right and set a width */
+
+/* ** ** Header Styles ** ** */
+h1, h2, h3, h4, h5 {padding:10px; margin:0 0 0.5em; line-height:1.1em;}
+h1 {    font-size:1.5em;} 
+h2 {    font-size:1.4em;} 
+h3 {    font-size:1.3em;} 
+h4 {    font-size:1.2em;} 
+h5 {    font-size:1.1em;} 
+h6 {    font-size:1.05em;}
+
+/* ** ** ul li's ** ** */
+ul{
+  list-style:outside disc;
+}
+ul,ol{
+  margin:0 0 1.5em 1.5em;
+  padding:0;
+}
+li ul,li ol{
+  padding:0;
+  margin:0 0 1.5em 1.5em;
+}
+
+
+/* ** ** custom select color ** ** */
+::selection {
+    background: #7583cc; /* Safari */
+    }
+::-moz-selection {
+    background: #7583cc; /* Firefox */
+    color:#fff;
+}
+/* ** ** paragraph styling ** ** */
+p {margin:0 0 1.52em;}
+
+
+
+table{
+    border-collapse:collapse;
+
+}
+
+table,td,th{
+  border: solid black 1px;
+  padding:5px;
+  font:  'Courier New', Courier, monospace;
+   }
+.container{
+    margin-left: 30px;
+    padding:10px;
+	min-height:600px;
+}
 
 #sidebar{
     padding:20px;
