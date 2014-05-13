@@ -25,15 +25,16 @@ with con:
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
-        print "<th>%s</th><th>GEO</th></thead>" % header[col]
-        for row in rows:
-            print "<tr>"
-            for col in header_order:
-                print "<th>%s</th>" % row[col]
-            print "<th><a href='%s'>LINK<a></th>" % row['http']    
-            print "</tr>"
-        else:
-            pass
+        print "<th>%s</th>" % header[col]
+    print "<th>GEO</th></thead>"
+    for row in rows:
+        print "<tr>"
+        for col in header_order:
+            print "<th>%s</th>" % row[col]
+        print "<th><a href='%s'>LINK<a></th>" % row['http']    
+        print "</tr>"
+    else:
+        pass
     
     print("</table></div><br>")
     print("<a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) )
