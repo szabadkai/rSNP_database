@@ -51,10 +51,10 @@ for bed in onlyfiles:
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
 			# print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,jac['jaccard'])
-			scores[bed]=jac['jaccard']
+			scores[str(bed).split('.')[0]]=jac['jaccard']
 
 for bed in sorted(scores.items(), key=lambda x: x[1]):
-	print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,scores[bed])
+	print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (bed,bed,scores[bed])
 
 print"</table>"
 print(yate.include_footer({""}))
