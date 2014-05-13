@@ -25,8 +25,7 @@ with con:
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
-        print "<th>%s</th>" % header[col]
-        print "<th>GEO</th></thead>"
+        print "<th>%s</th><th>GEO</th></thead>" % header[col]
         for row in rows:
             print "<tr>"
             for col in header_order:
