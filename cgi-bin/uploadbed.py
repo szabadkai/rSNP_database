@@ -60,7 +60,8 @@ for bed in onlyfiles:
 
 	sorted_temp = sorted(temp.iteritems(), key=operator.itemgetter(1))	
 	for line in sorted_temp:
-		print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(line).split('.')[0],line,temp[line])
+		print line
+		# print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(line).split('.')[0],line,temp[line])
 
 print"</table>"
 print(yate.include_footer({""}))
