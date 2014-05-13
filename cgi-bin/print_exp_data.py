@@ -6,7 +6,7 @@ import yate
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['de_novo_motif','organism']
+header_order = ['TFBS_ID','peak','de_novo_motif','organism','chr','start','stop','target_perc','p']
 header = {'TFBS_ID':'TFBS','peak':'PEAK','de_novo_motif':'motif','organism':'Organism','chr':'chr','start':'start','stop':'stop','target_perc':'target%','p':'P'}
 
 form_data = cgi.FieldStorage().getvalue('exp')
@@ -26,15 +26,15 @@ with con:
     print "<thead>"
     for col in header_order:
         print "<th>%s</th>" % header[col]
-    print "<th>GEO</th></thead>"
-    for row in rows:
-        print "<tr>"
-        for col in header_order:
-            print "<th>%s</th>" % row[col]
-        print "<th><a href='%s'>LINK<a></th>" % row['http']    
-        print "</tr>"
-    else:
-        pass
+        print "<th>GEO</th></thead>"
+        for row in rows:
+            print "<tr>"
+            for col in header_order:
+                print "<th>%s</th>" % row[col]
+            print "<th><a href='%s'>LINK<a></th>" % row['http']    
+            print "</tr>"
+        else:
+            pass
     
     print("</table></div><br>")
     print("<a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) )
