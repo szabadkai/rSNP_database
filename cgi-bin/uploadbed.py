@@ -56,12 +56,11 @@ for bed in onlyfiles:
 			temp[bed]=jac['jaccard']
 	except:
 		print "problem in :"+bed
-		pass 
+		pass
 
-	sorted_temp = sorted(temp.iteritems(), key=operator.itemgetter(1))	
-	for line in sorted_temp:
-		print line
-		# print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(line).split('.')[0],line,temp[line])
+for bed in sorted(d.items(), key=lambda x: x[1]):
+	print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,temp[bed])
+
 
 print"</table>"
 print(yate.include_footer({""}))
