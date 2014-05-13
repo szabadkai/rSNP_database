@@ -21,16 +21,10 @@ def putToTmp(f):
 # processing the uploaded file
 form_data = cgi.FieldStorage()
 
-try:
-	bedfile = form_data['bed']
-	jaccard = float(form_data.getvalue('jaccard').replace(',','.'))
-except:	
-	print(yate.start_response())
-	print(yate.include_header(''))  
-	print(yate.para('Missing file or jaccard score! Try again! :)'))
-	print(yate.include_footer({""}))
-	exit()
-
+bedfile = form_data['bed']
+jaccard = float(form_data.getvalue('jaccard').replace(',','.'))
+if jaccard == None:
+	jaccard = 0.01
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
