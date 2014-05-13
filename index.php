@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <head>
    <meta charset="utf-8">
    <title>rSNP database</title>
