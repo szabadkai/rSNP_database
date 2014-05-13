@@ -41,15 +41,18 @@
      <input type=submit value="Select"></form>
    <br><br>
    <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
-   Upload you BED file to compare with other Chip-seq experiments.<br>
-    <input type="file" id="bed" name="bed" value="Upload BED file"><br>Jaccard score: 
+  Upload you BED file to compare with other Chip-seq experiments.<br>
+  <input type="file" id="bed" name="bed" value="Upload BED file"><br>
+    <div class="tiptext">Jaccard score: 
+    <div class="description"> The Jaccard index, also known as the Jaccard similarity coefficient (originally coined coefficient de communauté by Paul Jaccard), is a statistic used for comparing the similarity and diversity of sample sets. (0 - 1)</div>
+    </div>
     <input type="text" id="jaccard" name="jaccard">
-   <input type="submit" value="Upload and run analysis"><br><br><br>
-   </form>
-   <form action="./cgi-bin/lookup_gene.py" enctype="multipart/form-data" method="POST">
-   Choose your gene of interest!<br>
-   <input type="text" id="gene" name="gene">
-   <input type="submit" value="submit">
+    <input type="submit" value="Upload and run analysis"><br><br><br>
+    </form>
+    <form action="./cgi-bin/lookup_gene.py" enctype="multipart/form-data" method="POST">
+    Choose your gene of interest!<br>
+    <input type="text" id="gene" name="gene">
+    <input type="submit" value="submit">
 
    </form>
    </div>

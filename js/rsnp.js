@@ -7,3 +7,8 @@
 //window.onload = function(){
 //  alert("It is working");
 //}
+$(".tiptext").mouseover(function() {
+    $(this).children(".description").show();
+}).mouseout(function() {
+    $(this).children(".description").hide();
+});
