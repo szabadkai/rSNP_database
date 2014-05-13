@@ -26,7 +26,9 @@ try:
 	bedfile = form_data['bed']
 	jaccard = form_data.getvalue('jaccard')
 	if ',' in jaccard:
-		jaccard=jaccard.replace(',','.')
+		jaccard=float(jaccard.replace(',','.'))
+	else:
+		jaccard=float(jaccard)
 except:	
 	pass
 
