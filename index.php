@@ -2,7 +2,7 @@
 
 <html>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="rsnp.js"></script>
+<script src=".js/rsnp.js"></script>
 
     <head>
    <meta charset="utf-8">
