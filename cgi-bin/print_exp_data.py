@@ -21,9 +21,9 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,HTTP 
                     WHERE TFBS.experiment='%s' AND 
-                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr limit 1 ;""" % form_data)
+                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr ;""" % form_data)
     rows = cur.fetchall()
-    
+
     print "<thead>"
     for col in header_order:
         print "<th>%s</th>" % header[col]
