@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import operator
 
 import cgi
 import yate
@@ -45,15 +46,22 @@ onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypat
 
 print "<p>The following experiments show higher jaccard score than <strong>%s</strong> with your experiment:</p>" % jaccard
 print "<table><thead><tr><th>Experiment</th><th>jaccard score</th></tr></thead>"
+temp=dict()
 for bed in onlyfiles:
 	try:
 		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
-			print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,jac['jaccard'])
+			# print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,jac['jaccard'])
+			temp[bed]=jac['jaccard']
 	except:
 		print "problem in :"+bed
-		pass
+		pass 
+
+	sorted_temp = sorted(temp.iteritems(), key=operator.itemgetter(1))	
+	for line in sorted_temp:
+		print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(line).split('.')[0],line,temp[line])
+
 print"</table>"
 print(yate.include_footer({""}))
 
