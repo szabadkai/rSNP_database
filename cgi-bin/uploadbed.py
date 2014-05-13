@@ -59,7 +59,7 @@ for bed in onlyfiles:
 		pass
 
 for bed in sorted(d.items(), key=lambda x: x[1]):
-	print "<tr><th><a href='print_exp_data.py?exp=%s'>%s</a></th><th>%s</th></tr>"% (str(bed).split('.')[0],bed,temp[bed])
+	print(bed,temp[bed])
 
 
 print"</table>"
