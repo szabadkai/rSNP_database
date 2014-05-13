@@ -2,7 +2,7 @@
 
 <html>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>$(".tiptext").mouseover(function() {
+<script type="text/javascript">$(".tiptext").mouseover(function() {
     $(this).children(".description").show();
 }).mouseout(function() {
     $(this).children(".description").hide();
