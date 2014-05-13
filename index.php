@@ -2,7 +2,11 @@
 
 <html>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src=".js/rsnp.js"></script>
+<script>$(".tiptext").mouseover(function() {
+    $(this).children(".description").show();
+}).mouseout(function() {
+    $(this).children(".description").hide();
+});</script>
 
     <head>
    <meta charset="utf-8">
