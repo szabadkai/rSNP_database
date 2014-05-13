@@ -22,8 +22,10 @@ def putToTmp(f):
 form_data = cgi.FieldStorage()
 
 bedfile = form_data['bed']
-jaccard = float(form_data.getvalue('jaccard').replace(',','.'))
-if jaccard == None:
+
+if form_data.getvalue('jaccard'):
+	jaccard = float(form_data.getvalue('jaccard').replace(',','.'))
+else:
 	jaccard = 0.01
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
