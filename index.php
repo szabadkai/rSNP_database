@@ -42,7 +42,7 @@
    <br><br>
    <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
    Upload you BED file to compare with other Chip-seq experiments.<br>
-    <input type="file" id="bed" name="bed" value="Upload BED file">
+    <input type="file" id="bed" name="bed" value="Upload BED file"><br>Jaccard score: 
     <input type="text" id="jaccard" name="jaccard">
    <input type="submit" value="Upload and run analysis"><br><br><br>
    </form>
