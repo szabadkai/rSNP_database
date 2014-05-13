@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
 <html>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
     <head>
    <meta charset="utf-8">
    <title>rSNP database</title>
@@ -45,13 +43,7 @@
    <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
   Upload you BED file to compare with other Chip-seq experiments.<br>
   <input type="file" id="bed" name="bed" value="Upload BED file"><br>
-
-
-  <div class="tiptext">Text
-<div class="description"> Here is the big fat description box</div>
-</div>
-
-
+  
     Jaccard score: 
     
     <input type="text" id="jaccard" name="jaccard">
