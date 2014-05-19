@@ -27,8 +27,6 @@ Please let us know whitch SNP you're interested in? ( use rs# notation! )<br>
 <textarea id="seq" class="reset" rows="3" cols="80" name="SNPs">rs1000002 rs1000016 rs10000171 rs10000226  rs10000232</textarea><br>
 <input type=submit value="Select"></form>
 <br><br>
-
-
 <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
 <select id="exp" name="exp" >
 <?php
@@ -39,13 +37,12 @@ foreach($rows as $row){
    echo $row;
 }
 ?>
-</select>  
+</select> 
 <input type=submit value="Select"></form>
 <br><br>
 <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
 Upload you BED file to compare with other Chip-seq experiments.<br>
 <input type="file" id="bed" name="bed" value="Upload BED file"><br>
-</div>
 
 <a href="#" title="The Jaccard index, also known as the Jaccard similarity coefficient 
                     (originally coined coefficient de communauté by Paul Jaccard), is a statistic used for 
