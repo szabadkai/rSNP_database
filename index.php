@@ -12,6 +12,9 @@
     $(function() {
     $( document ).tooltip();
     });
+    $(function() {
+    $( "#accordion" ).accordion();
+    });
     </script>
     </head>
     <body>
