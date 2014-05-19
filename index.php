@@ -24,7 +24,6 @@
      <a href="http://emboss.abc.hu/rsnpdb/"><img src="logo2.png" alt="logo-rsnpdb" height="40"></a>
   </div>
 </div>
-<div><p id="sidebar"><?php echo file_get_contents('./DATA/sidebar.txt'); ?></p></div>
 
 <div id="accordion">
   <h3>SNP view</h3>
