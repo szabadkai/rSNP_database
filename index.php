@@ -15,6 +15,9 @@
     $(function() {
     $( "#accordion" ).accordion();
     });
+    $(function() {
+    $( "#tabs" ).tabs();
+    });
     </script>
     </head>
     <body>
@@ -25,14 +28,21 @@
   </div>
 </div>
 
-<div id="accordion">
-  <h3>SNP view</h3>
-      <form action="./cgi-bin/print_rsnp_data.py" method="POST" enctype="application/x-www-form-urlencoded">
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">SNP view</a></li>
+    <li><a href="#tabs-2">Experiment view</a></li>
+    <li><a href="#tabs-3">BED view</a></li>
+    <li><a href="#tabs-4">Gene view</a></li>
+  </ul>
+  <div id="tabs-1">
+    <form action="./cgi-bin/print_rsnp_data.py" method="POST" enctype="application/x-www-form-urlencoded">
       Please let us know whitch SNP you're interested in? ( use rs# notation! )<br>
       <textarea id="seq" class="reset" rows="3" cols="80" name="SNPs">rs1000002 rs1000016 rs10000171 rs10000226  rs10000232</textarea><br>
       <input type=submit value="Select"></form>
-  <h3>Experiment view</h3>
-      <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
+      </div>
+  <div id="tabs-2">
+    <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
       <select id="exp" name="exp" >
       <?php
       $txt_file    = file_get_contents('./DATA/exp.txt');
@@ -40,8 +50,9 @@
       foreach($rows as $row){ echo $row; } ?>
       </select> 
       <input type=submit value="Select"></form>
-  <h3>BED view</h3>
-      <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
+      </div>
+  <div id="tabs-3">
+    <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
       Upload you BED file to compare with other Chip-seq experiments.<br>
       <input type="file" id="bed" name="bed" value="Upload BED file"><br>
       <a href="#" title="The Jaccard index, also known as the Jaccard similarity coefficient 
@@ -50,14 +61,15 @@
       <input type="text" id="jaccard" name="jaccard">
       <input type="submit" value="Upload and run analysis"><br><br><br>
       </form>
-  <h3>Section 4</h3>
-      <form action="./cgi-bin/lookup_gene.py" enctype="multipart/form-data" method="POST">
+      </div>
+  <div id="tabs-4">
+    <form action="./cgi-bin/lookup_gene.py" enctype="multipart/form-data" method="POST">
       Choose your gene of interest!<br>
       <input type="text" id="gene" name="gene">
       <input type="submit" value="submit">
       </form>
+      </div>
 </div>
-
 
 </body></html>
 
