@@ -8,6 +8,17 @@
     <meta charset="utf-8">
     <title>rSNP database</title>
     <link rel="stylesheet" href="./main.css">
+     <script>
+    $(function() {
+    $( document ).tooltip();
+    });
+    </script>
+    /*<style>
+    label {
+    display: inline-block;
+    width: 5em;
+    }*/
+    </style>
     </head>
     <body>
 <div class="topbar">
