@@ -12,15 +12,14 @@ print(yate.start_response())
 print(yate.include_header(""))  
 print "rSNP: "+form_data
 with con:
-    cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT RS.*,MATRIX.*,TFBS.*
-                    FROM RS,MATRIX,TFBS
-                    WHERE RS.rs_ID = %r AND
-                    TFBS.TFBS_ID=RS.TFBS_ID AND
-                    TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
-    rows = cur.fetchall()
-    a=rows[0]['matrix_bin'].split('\n')
-
+	cur = con.cursor(mdb.cursors.DictCursor)
+	cur.execute(""" SELECT RS.*,MATRIX.*,TFBS.*
+				FROM RS,MATRIX,TFBS
+				WHERE RS.rs_ID = %r AND
+				TFBS.TFBS_ID=RS.TFBS_ID AND
+				TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
+	rows = cur.fetchall()
+	a=rows[0]['matrix_bin'].split('\n')
 	print '<div class="input_field"><table><thead>'
 	for col in ['A','T','G','C']:
 		print "<th>%s</th>" % col
@@ -32,4 +31,4 @@ with con:
 		print "</tr>"
 	print("</table></div>")
 
-print(yate.include_footer())
+	print(yate.include_footer())
