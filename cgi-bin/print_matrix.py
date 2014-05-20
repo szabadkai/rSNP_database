@@ -24,7 +24,7 @@ with con:
     print '<div class="input_field"><table><thead>'
 	for col in ['A','T','G','C']:
 		print "<th>%s</th>" % col
-
+	print "</thead>"
 	for row in a:
 	    print "<tr>"
 	    for i in row.split():
