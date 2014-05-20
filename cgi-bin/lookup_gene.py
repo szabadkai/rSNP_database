@@ -27,6 +27,6 @@ with con:
         row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s'target=\"_blank\">%s</a></div>" % (row['TFBS_ID'],row['TFBS_ID'],row['TFBS_ID'],row['gene'])
         print "<th>%s</th>" % row['TFBS_ID']
         print "<th>%s %s</th>" % (row['organism'],row['disease'])
-        print "<th><a href='%s'>%s<a></th></tr>" % (row['http'],row['experiment'])
+        print "<th><a href='%s'>%s<a></th></tr>" % (row['http'],row['TFBS.experiment'])
     print("</table></div>")   
 print(yate.include_footer(""))
