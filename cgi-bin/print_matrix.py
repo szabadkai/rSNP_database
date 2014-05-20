@@ -19,6 +19,7 @@ with con:
                     TFBS.TFBS_ID=RS.TFBS_ID AND
                     TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
     rows = cur.fetchall()
-    print "<p>%s</p>" % rows[0]['matrix_bin']
+    a=rows[0]['matrix_bin'].split()
+    print "<p>%s</p>" % a[0]
 
 print(yate.include_footer())
