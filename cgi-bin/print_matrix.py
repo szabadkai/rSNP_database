@@ -22,8 +22,8 @@ with con:
     a=rows[0]['matrix_bin'].split('\n')
 
     print '<div class="input_field"><table><thead>'
-	for col in ('A','T','G','C'):
-	    print "<th>%s</th>" % col
+	for col in ['A','T','G','C']:
+		print "<th>%s</th>" % col
 
 	for row in a:
 	    print "<tr>"
