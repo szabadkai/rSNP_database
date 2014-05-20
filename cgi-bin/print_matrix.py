@@ -22,11 +22,14 @@ with con:
 	a=rows[0]['matrix_bin'].split('\n')
 
 	print '<table><thead>'
-	for col in ['A','T','G','C']:
+	for col in ['Position','A','T','G','C']:
 		print "<th>%s</th>" % col
 	print "</thead>"
+	count=1
 	for row in a:
 		print "<tr>"
+		print "<th>%s</th>" % count
+		count = count +1
 		for i in row.split():
 			print "<th>%s</th>" % i
 		print "</tr>"

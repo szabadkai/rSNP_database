@@ -16,7 +16,7 @@ form_data = cgi.FieldStorage().getvalue('exp')
 print(yate.start_response())
 print(yate.include_header(''))  
 print(yate.para(form_data+" <a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) ))
-with con: 
+    with con: 
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,HTTP 
@@ -36,7 +36,7 @@ with con:
         print "<th><a href='%s'>LINK<a></th>" % row['http']    
         print "</tr>"
 
-    
+
     print("</table></div><br>")
     print("<a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) )
 
