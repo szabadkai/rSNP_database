@@ -21,15 +21,15 @@ with con:
     rows = cur.fetchall()
     a=rows[0]['matrix_bin'].split('\n')
 
-    print '<div class="input_field"><table><thead>'
-	# for col in ['A','T','G','C']:
-	# 	print "<th>%s</th>" % col
-	# print "</thead>"
-	# for row in a:
-	#     print "<tr>"
-	#     for i in row.split():
-	#     	print "<th>%s</th>" % i
-	#     print "</tr>"
-	# print("</table></div>")
+	print '<div class="input_field"><table><thead>'
+	for col in ['A','T','G','C']:
+		print "<th>%s</th>" % col
+	print "</thead>"
+	for row in a:
+		print "<tr>"
+		for i in row.split():
+			print "<th>%s</th>" % i
+		print "</tr>"
+	print("</table></div>")
 
 print(yate.include_footer())
