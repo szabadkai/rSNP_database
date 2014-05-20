@@ -20,6 +20,16 @@ with con:
                     TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
     rows = cur.fetchall()
     a=rows[0]['matrix_bin'].split('\n')
-    print a
+	
+	print '<div class="input_field"><table><thead>'
+    for col in ('A','T','G','C'):
+        print "<th>%s</th>" % col
+
+    for row in a:
+        print "<tr>"
+        for i in row.split():
+        	print "<th>%s</th>" % i
+        print "</tr>"
+    print("</table></div>")
 
 print(yate.include_footer())
