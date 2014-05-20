@@ -24,10 +24,13 @@ with con:
     rows = cur.fetchall()
     
     for row in rows:
-        row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">%s</a></div>" % ((row['TFBS_ID'],) * 4)
+        row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s'target=\"_blank\">%s</a></div>" % ((row['TFBS_ID'],) * 4)
         print "<tr>"
         print "<th>%s</th>" % row['gene']
         print "<th>%s</th>" % row['TFBS_ID']
+        print "<th>%s</th>" % row['organism']
+        print "<th>%s</th>" % row['disease']
+        print "<th>%s</th>" % row['experiment']
         print "</tr>"
     print("</table></div>")   
 print(yate.include_footer(""))
