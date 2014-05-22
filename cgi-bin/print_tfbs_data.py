@@ -30,7 +30,9 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
-                    TFBS.peak = ORTHOLOGS.peak ;""" % str(form_data))
+                    TFBS.peak = ORTHOLOGS.peak AND
+                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
+                    ;""" % str(form_data))
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
