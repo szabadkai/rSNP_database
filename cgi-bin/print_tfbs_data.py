@@ -33,20 +33,21 @@ with con:
                     TFBS.peak = ORTHOLOGS.peak AND
                     CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment ;""" % form_data)
     rows = cur.fetchall()
-    print "<thead>"
-    for col in header_order:
-        print "<th>%s</th>" % header[col]
-    print "<th>GEO</th></thead>"
-    for row in rows:
-        print "<tr>"
-        for col in header_order:
-            print "<th>%s</th>" % row[col]
-        print "<th><a href='%s'>LINK<a></th>" % row['http']    
-        print "</tr>"
-    else:
-        pass
+    print rows
+    # print "<thead>"
+    # for col in header_order:
+    #     print "<th>%s</th>" % header[col]
+    # print "<th>GEO</th></thead>"
+    # for row in rows:
+    #     print "<tr>"
+    #     for col in header_order:
+    #         print "<th>%s</th>" % row[col]
+    #     print "<th><a href='%s'>LINK<a></th>" % row['http']    
+    #     print "</tr>"
+    # else:
+    #     pass
     
-    print("</table></div><br>")
+    # print("</table></div><br>")
    
     #######################################################
 
