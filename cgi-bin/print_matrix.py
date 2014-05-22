@@ -26,7 +26,7 @@ with con:
 		print "<th>%s</th>" % col
 	print "</thead>"
 	count=1
-	for row in a[1:]:
+	for row in a[1:-1]:
 		print "<tr>"
 		print "<th>%s</th>" % count
 		count = count +1
