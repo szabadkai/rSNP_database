@@ -39,7 +39,7 @@ with con:
         print "<th>%s</th>" % header[col]
     print "<th>GEO</th></thead>"
     for row in rows:
-        row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
+        row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'],) * 4)
 
         print "<tr>"
         for col in header_order:
@@ -50,6 +50,8 @@ with con:
         pass
     
     print("</table></div><br>")
+    x="<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
+
    
     #######################################################
 
@@ -88,6 +90,8 @@ with con:
         print("</table></div>")
     else:
         print"No SNP in this TFBS"
-
-print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['ORTHOLOGS.peak'],rows[0]['ORTHOLOGS.peak']) )
+print x
 print(yate.include_footer({""}))
+
+
+
