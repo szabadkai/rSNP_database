@@ -30,10 +30,15 @@ with con:
 		print "<th>%s</th>" % col
 	print "</thead>"
 	count=1
+	
 	for row in a[1:-1]:
 		if int(pos)==count:
+			print "<tr>"
+			print "<th>%s</th>" % count
+			count = count +1
 			for i in row.split():
-				print "<th%s</th>" % i
+				print "<th>%s</th>" % i
+			print "</tr>"
 				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
 		else:
 			print "<tr>"
