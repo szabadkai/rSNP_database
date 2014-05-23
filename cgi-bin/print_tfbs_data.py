@@ -50,7 +50,8 @@ with con:
         pass
     
     print("</table></div><br>")
-    # x="<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
+
+    print "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
 
    
     #######################################################
