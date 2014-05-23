@@ -39,7 +39,7 @@ with con:
         print "<th>%s</th>" % header[col]
     print "<th>GEO</th></thead>"
     for row in rows:
-        row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'],) * 4)
+        row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
 
         print "<tr>"
         for col in header_order:
