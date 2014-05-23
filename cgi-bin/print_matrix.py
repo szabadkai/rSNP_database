@@ -7,10 +7,14 @@ import yate
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 form_data = cgi.FieldStorage().getvalue('id')
+minor = cgi.FieldStorage().getvalue('minor')
+major = cgi.FieldStorage().getvalue('major')
 
 print(yate.start_response())
 print(yate.include_header(""))  
 print "rSNP: "+form_data
+
+
 with con:
 	cur = con.cursor(mdb.cursors.DictCursor)
 	cur.execute(""" SELECT RS.*,MATRIX.*,TFBS.*
@@ -22,7 +26,7 @@ with con:
 	a=rows[0]['matrix_bin'].split('\n')
 
 	print '<table><thead>'
-	for col in ['Position','A','T','G','C']:
+	for col in ['Position','G','A','T','C']:
 		print "<th>%s</th>" % col
 	print "</thead>"
 	count=1
