@@ -32,7 +32,7 @@ with con:
                     WHERE TFBS_ID='%s' AND 
                     TFBS.peak = ORTHOLOGS.peak AND
                     CONCAT_WS('_',%s,TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                    ;""" % (str(form_data),('hs' if row['organism'])==1 else 'Mus musculus'))
+                    ;""" % (form_data,'hs' if row['organism'])==1 else 'Mus musculus')
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
