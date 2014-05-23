@@ -22,15 +22,15 @@ with con:
 				TFBS.TFBS_ID=RS.TFBS_ID AND
 				TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
 	rows = cur.fetchall()
-	print row['minor'], row['major']
 	a=rows[0]['matrix_bin'].split('\n')
+	print rows['minor'], rows['major']
 
 	print '<table><thead>'
 	for col in ['Position','G','A','T','C']:
 		print "<th>%s</th>" % col
 	print "</thead>"
 	count=1
-	
+
 	for row in a[1:-1]:
 		if int(pos)==count:
 			print "<tr>"
