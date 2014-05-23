@@ -33,7 +33,7 @@ with con:
 	for row in a[1:-1]:
 		if int(pos)==count:
 			for i in row.split():
-				print "<th%s</th>" % (if  else '>'+i)
+				print "<th%s</th>" % i
 				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
 		else:
 			print "<tr>"
