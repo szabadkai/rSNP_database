@@ -38,19 +38,23 @@ with con:
         cur.execute(""" SELECT  RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
                         FROM    RS, TFBS
                         WHERE   RS_num='%s' AND TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
+        
         rows = cur.fetchall()
+        
         for row in rows:
             if row['strand']=='-':
                 pos = row['start']-row['SNP_pos']
             else: 
                 pos = row['SNP_pos']-row['start']
-                
+
             row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
-            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
+            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a>" % ((row['RS_num'],) * 2)
             row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs_%s</a></div>" % ((row['TFBS_ID'],) * 4)            
+            
             print "<tr>"
             for col in header_order:
-                print "<th>%s</th>" % row[col]
+                print "<td>%s</td>" % row[col]
             print "</tr>"
         print("</table></div>")   
+
 print(yate.include_footer(""))

@@ -24,27 +24,27 @@ with con:
 	rows = cur.fetchall()
 	a=rows[0]['matrix_bin'].split('\n')
 	print minor+"\t"+major
-	print '<table><thead>'
+	print '<table><tr>'
 	for col in ['Position','G','A','T','C']:
 		print "<th>%s</th>" % col
-	print "</thead>"
+	print "</tr>"
 	count=1
 
 	for row in a[1:-1]:
 		if int(pos)==count:
 			print "<tr>"
-			print "<th>%s</th>" % count
+			print "<td>%s</td>" % count
 			count = count +1
 			for i in row.split():
-				print "<th>%s</th>" % i
+				print "<td>%s</td>" % i
 			print "</tr>"
 				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
 		else:
 			print "<tr>"
-			print "<th>%s</th>" % count
+			print "<td>%s</td>" % count
 			count = count +1
 			for i in row.split():
-				print "<th>%s</th>" % i
+				print "<td>%s</td>" % i
 			print "</tr>"
 	print("</table>")
 
