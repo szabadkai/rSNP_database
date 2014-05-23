@@ -40,8 +40,8 @@ with con:
     print "<th>GEO</th></thead>"
     for row in rows:
         row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
-        row['organism'] = 'Homo sapiens' if row['organism']=='1' else 'Mus musculus'
-
+        #row['organism'] = 'Homo sapiens' if row['organism']=='1' else 'Mus musculus'
+        print row['organism']+type(row['organism'])
         print "<tr>"
         for col in header_order:
             print "<th>%s</th>" % row[col]
