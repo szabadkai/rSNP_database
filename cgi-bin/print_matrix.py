@@ -38,11 +38,11 @@ with con:
 			count = count +1
 			for i,j  in enumerate(row.split()):
 				if i == ind[minor]:
-					print "<td style='background-color:yellow;'>%s</td>" % i 
+					print "<td style='background-color:yellow;'>%s</td>" % j 
 				if i == ind[major]:
-					print "<td style='background-color:red;'>%s</td>" % i 
+					print "<td style='background-color:red;'>%s</td>" % j 
 				else:
-					print "<td%s</td>" % i
+					print "<td%s</td>" % j
 			print "</tr>"
 		else:
 			print "<tr>"
