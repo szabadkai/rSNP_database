@@ -13,7 +13,7 @@ major = cgi.FieldStorage().getvalue('major')
 print(yate.start_response())
 print(yate.include_header(""))  
 print "rSNP: "+form_data
-ind={'G':0,'A':1,'T':2,'C':3}
+ind={'A':0,'C':1,'G':2,'T':3}
 
 with con:
 	cur = con.cursor(mdb.cursors.DictCursor)
@@ -26,7 +26,7 @@ with con:
 	a=rows[0]['matrix_bin'].split('\n')
 	print pos+"\t"+minor+"\t"+major
 	print '<table><tr>'
-	for col in ['Position','G','A','T','C']:
+	for col in ['Position','A','C','G','T']:
 		print "<th>%s</th>" % col
 	print "</tr>"
 	count=1
