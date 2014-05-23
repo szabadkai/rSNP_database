@@ -72,8 +72,8 @@ with con:
             
         for row in rows:
             if row['strand']=='-':
-                pos =row['stop']-row['SNP_pos']
-            else: 
+                pos = row['stop']-row['SNP_pos']
+            else:
                 pos = row['SNP_pos']-row['start']
 
             row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
