@@ -24,7 +24,7 @@ with con:
 				TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
 	rows = cur.fetchall()
 	a=rows[0]['matrix_bin'].split('\n')
-	print minor+"\t"+major
+	print pos"\r"minor+"\t"+major
 	print '<table><tr>'
 	for col in ['Position','G','A','T','C']:
 		print "<th>%s</th>" % col
@@ -36,7 +36,7 @@ with con:
 			print "<tr>"
 			print "<td>%s</td>" % count
 			count = count +1
-			for j, i in enumerate(row.split()):
+			for i,j  in enumerate(row.split()):
 				if i == ind[minor]:
 					print "<td style='background-color:yellow;'>%s</td>" % i 
 				if i == ind[major]:
@@ -44,7 +44,6 @@ with con:
 				else:
 					print "<td%s</td>" % i
 			print "</tr>"
-				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
 		else:
 			print "<tr>"
 			print "<td>%s</td>" % count
