@@ -31,7 +31,7 @@ with con:
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
                     TFBS.peak = ORTHOLOGS.peak AND
-                    CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment 
+                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
                     ;""" % str(form_data))
     rows = cur.fetchall()
     print "<thead>"
@@ -40,7 +40,6 @@ with con:
     print "<th>GEO</th></thead>"
     for row in rows:
         row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
-        # row['organism'] = 'Homo sapiens' if row['organism']=='1' else 'Mus musculus'
 
         print "<tr>"
         for col in header_order:
@@ -90,6 +89,8 @@ with con:
     else:
         print"No SNP in this TFBS"
 
-print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['ORTHOLOGS.peak'],rows[0]['ORTHOLOGS.peak']) )
+print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
 print(yate.include_footer({""}))
+
+
 
