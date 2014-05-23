@@ -22,6 +22,7 @@ with con:
 				TFBS.TFBS_ID=RS.TFBS_ID AND
 				TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
 	rows = cur.fetchall()
+	print minor. major
 	a=rows[0]['matrix_bin'].split('\n')
 
 	print '<table><thead>'
@@ -30,12 +31,17 @@ with con:
 	print "</thead>"
 	count=1
 	for row in a[1:-1]:
-		print "<tr>"
-		print "<th>%s</th>" % count
-		count = count +1
-		for i in row.split():
-			print "<th>%s</th>" % i
-		print "</tr>"
+		if int(pos)==count:
+			for i in row.split():
+				print "<th%s</th>" % (if  else '>'+i)
+				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
+		else:
+			print "<tr>"
+			print "<th>%s</th>" % count
+			count = count +1
+			for i in row.split():
+				print "<th>%s</th>" % i
+			print "</tr>"
 	print("</table>")
 
 	print(yate.include_footer(""))
