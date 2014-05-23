@@ -42,8 +42,8 @@ with con:
         rows = cur.fetchall()
         
         for row in rows:
-            if row['strand']=='-':
-                pos = row['start']-row['SNP_pos']
+           if row['strand']=='-':
+                pos =row['stop']-row['SNP_pos']
             else: 
                 pos = row['SNP_pos']-row['start']
 
