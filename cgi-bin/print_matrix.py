@@ -37,7 +37,7 @@ with con:
 			print "<td>%s</td>" % count
 			count = count +1
 			for i in row.split():
-				print "<td>%s</td>" % i
+				print "<td%s</td>" % (" style='background-color:yellow;'>%s" % i if i==minor" style='background-color:yellow;'>%s" % i if i=="major" '>'+i else)
 			print "</tr>"
 				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
 		else:
