@@ -40,14 +40,16 @@ with con:
                         WHERE   RS_num='%s' AND TFBS.TFBS_ID=RS.TFBS_ID""" % form_data)
         rows = cur.fetchall()
         for row in rows:
-            row['matrix_id']="<a href='print_matrix.py?id=%s;minor=%s;major=%s'>show matrix</a>" % row['rs_ID']
-            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
-            row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs_%s</a></div>" % ((row['TFBS_ID'],) * 4)
-            print row.keys()
             # if row['strand']=='-':
             #     print row['start']-row['SNP_pos']
             # else:
             #     print row['stop']-row['SNP_pos']
+
+            row['matrix_id']="<a href='print_matrix.py?id=%s;minor=%s;major=%s'>show matrix</a>" % (row['rs_ID'],row['rs_ID'],row['rs_ID'])
+            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
+            row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs_%s</a></div>" % ((row['TFBS_ID'],) * 4)
+            print row.keys()
+            
             print "<tr>"
             for col in header_order:
                 print "<th>%s</th>" % row[col]
