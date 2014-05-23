@@ -39,7 +39,7 @@ with con:
 			for i,j  in enumerate(row.split()):
 				if i == ind[minor]:
 					print "<td style='background-color:yellow;'>%s</td>" % j 
-				if i == ind[major]:
+				elif i == ind[major]:
 					print "<td style='background-color:red;'>%s</td>" % j 
 				else:
 					print "<td%s</td>" % j
