@@ -9,7 +9,7 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 form_data = cgi.FieldStorage().getvalue('id')
 minor = cgi.FieldStorage().getvalue('minor')
 major = cgi.FieldStorage().getvalue('major')
-
+print minor, major
 print(yate.start_response())
 print(yate.include_header(""))  
 print "rSNP: "+form_data
