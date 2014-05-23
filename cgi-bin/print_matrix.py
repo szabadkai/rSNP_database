@@ -23,8 +23,7 @@ with con:
 				TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
 	rows = cur.fetchall()
 	a=rows[0]['matrix_bin'].split('\n')
-	print rows['minor'], rows['major']
-
+	print minor+"\t"+major
 	print '<table><thead>'
 	for col in ['Position','G','A','T','C']:
 		print "<th>%s</th>" % col
