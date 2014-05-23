@@ -7,6 +7,7 @@ import yate
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 form_data = cgi.FieldStorage().getvalue('id')
+pos = cgi.FieldStorage().getvalue('pos')
 minor = cgi.FieldStorage().getvalue('minor')
 major = cgi.FieldStorage().getvalue('major')
 print(yate.start_response())
