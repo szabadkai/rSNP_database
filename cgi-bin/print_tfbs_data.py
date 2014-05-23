@@ -31,8 +31,8 @@ with con:
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
                     TFBS.peak = ORTHOLOGS.peak AND
-                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                    ;""" % str(form_data))
+                    CONCAT_WS('_',%s,TFBS.disease,TFBS.experiment)=HTTP.experiment 
+                    ;""" % (str(form_data),('hs' if row['organism'])==1 else 'Mus musculus'))
     rows = cur.fetchall()
     print "<thead>"
     for col in header_order:
@@ -40,12 +40,13 @@ with con:
     print "<th>GEO</th></thead>"
     for row in rows:
         row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
-        #row['organism'] = 'Homo sapiens' if row['organism']=='1' else 'Mus musculus'
+        if row['organism']
+        row['organism'] = 'Homo sapiens' if row['organism']=='1' else 'Mus musculus'
 
         print "<tr>"
         for col in header_order:
             print "<th>%s</th>" % row[col]
-        print row['organism']+type(row['organism'])
+        print "<th><a href='%s'>LINK<a></th>" % row['http']    
         print "</tr>"
     else:
         pass
