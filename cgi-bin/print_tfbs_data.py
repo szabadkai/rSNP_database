@@ -72,9 +72,9 @@ with con:
             
         for row in rows:
             if row['strand']=='-':
-                pos = 0#row['stop']-row['SNP_pos']
+                pos = row['SNP_pos']-row['start']
             else: 
-                pos = 8#row['SNP_pos']-row['start']
+                pos = row['SNP_pos']-row['start']
 
             row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
             row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
