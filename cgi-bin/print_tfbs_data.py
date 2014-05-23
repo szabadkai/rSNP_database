@@ -39,7 +39,7 @@ with con:
         print "<th>%s</th>" % header[col]
     print "<th>GEO</th></thead>"
     for row in rows:
-        row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a></div>" % ((row['TFBS_ID'],) * 4)
+        row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
 
         print "<tr>"
         for col in header_order:
