@@ -44,13 +44,13 @@ with con:
                 pos = row['start']-row['SNP_pos']
             else: 
                 pos = row['SNP_pos']-row['start']
-            row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],row['SNP_pos'],row['minor_al'],row['major_al'])
+                
+            row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
             row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
             row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs_%s</a></div>" % ((row['TFBS_ID'],) * 4)            
             print "<tr>"
             for col in header_order:
                 print "<th>%s</th>" % row[col]
             print "</tr>"
-        
-    print("</table></div>")   
+        print("</table></div>")   
 print(yate.include_footer(""))
