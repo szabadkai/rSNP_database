@@ -22,7 +22,7 @@ with con:
 				TFBS.TFBS_ID=RS.TFBS_ID AND
 				TFBS.matrix_id = MATRIX.matrix_id;""" % form_data)
 	rows = cur.fetchall()
-	print minor. major
+	print row['minor'], row['major']
 	a=rows[0]['matrix_bin'].split('\n')
 
 	print '<table><thead>'
