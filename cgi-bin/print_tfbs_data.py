@@ -72,7 +72,7 @@ with con:
             
         for row in rows:
             if row['strand']=='-':
-                pos = row['SNP_pos']-row['start']
+                pos = row['SNP_pos']-row['stop']
             else: 
                 pos = row['SNP_pos']-row['start']
 
