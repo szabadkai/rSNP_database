@@ -39,4 +39,4 @@ with con:
 		print "</tr>"
 	print("</table>")
 
-	print(yate.include_footer())
+	print(yate.include_footer(""))
