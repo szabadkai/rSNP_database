@@ -3,7 +3,7 @@
 import MySQLdb as mdb
 import cgi
 import yate
-
+ 
 
 def split_input(field):
     a=[]
@@ -43,7 +43,7 @@ with con:
         
         for row in rows:
            if row['strand']=='-':
-                pos =row['stop']-row['SNP_pos']
+                pos =row['SNP_pos'] -row['stop']
             else: 
                 pos = row['SNP_pos']-row['start']
 
