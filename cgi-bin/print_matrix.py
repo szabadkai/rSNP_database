@@ -13,7 +13,7 @@ major = cgi.FieldStorage().getvalue('major')
 print(yate.start_response())
 print(yate.include_header(""))  
 print "rSNP: "+form_data
-
+ind={'G':0,'A':1,'T':2,'C':3}
 
 with con:
 	cur = con.cursor(mdb.cursors.DictCursor)
@@ -36,8 +36,13 @@ with con:
 			print "<tr>"
 			print "<td>%s</td>" % count
 			count = count +1
-			for i in row.split():
-				print "<td%s</td>" % (" style='background-color:yellow;'>%s" % i if i == minor " style='background-color:yellow;'>%s" % i elif i==major else '>'+i )
+			for j, i in enumerate(row.split()):
+				if i == ind[minor]:
+					print "<td style='background-color:yellow;'>%s</td>" % i 
+				if i == ind[major]:
+					print "<td style='background-color:red;'>%s</td>" % i 
+				else:
+					print "<td%s</td>" % i
 			print "</tr>"
 				#>>> print "At least, that's what %s told me." %("he" if gender == "male" else "she")
 		else:
