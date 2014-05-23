@@ -89,8 +89,5 @@ with con:
     else:
         print"No SNP in this TFBS"
 
-print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak']) )
+print("<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['ORTHOLOGS.peak'],rows[0]['ORTHOLOGS.peak']) )
 print(yate.include_footer({""}))
-
-
-
