@@ -37,7 +37,7 @@ with con:
 			print "<td>%s</td>" % count
 			count = count +1
 			for i,j  in enumerate(row.split()):
-				print "<td%s</td>" % j
+				print "<td>%s</td>" % j
 			print "</tr>"
 		else:
 			print "<tr>"
