@@ -37,7 +37,12 @@ with con:
 			print "<td>%s</td>" % count
 			count = count +1
 			for i,j  in enumerate(row.split()):
-				print "<td>%s</td>" % j
+				if i == ind[minor]:
+					print "<td style='background-color:yellow;'>%s</td>" % j 
+				elif i == ind[major]:
+					print "<td style='background-color:red;'>%s</td>" % j 
+				else:
+					print "<td>%s</td>" % j
 			print "</tr>"
 		else:
 			print "<tr>"
