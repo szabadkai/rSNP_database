@@ -16,7 +16,12 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 with con:
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute( "SELECT  * FROM    HTTP,TFBS,GENE2TFBS WHERE  GENE2TFBS.gene LIKE '%"+form_data.upper()+"%' AND  GENE2TFBS.TFBS_ID = TFBS.TFBS_ID AND CONCAT_WS('_',TFBS.organism,TFBS.disease,TFBS.experiment)=HTTP.experiment ORDER BY TFBS.organism,TFBS.disease,TFBS.experiment" )
+    cur.execute( """SELECT  *   FROM    HTTP,TFBS,GENE,GENE2TFBS 
+                                WHERE  GENE.alt_name LIKE '%s'
+                                AND  GENE.gene_id = GENE2TFBS.gene_id
+                                AND GENE2TFBS.TFBS_ID = TFBS.TFBS_ID 
+                                AND CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
+                                ORDER BY TFBS.organism,TFBS.disease,TFBS.experiment""" % (form_data.upper() , form_data.upper()))
     rows = cur.fetchall()
     
     for row in rows:
