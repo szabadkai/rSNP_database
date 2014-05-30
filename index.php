@@ -65,8 +65,8 @@
   <div id="tabs-4">
     <form action="./cgi-bin/lookup_gene.py" enctype="multipart/form-data" method="POST">
       Choose your gene of interest!<br>
-      <input type="text" id="gene" name="gene">
-      <input type="submit" value="submit">
+      <textarea id="gene" class="reset" rows="1" cols="50" name="gene">HLA</textarea><br>
+      <input type=submit value="Select">
       </form>
       </div>
 </div>
