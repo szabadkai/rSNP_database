@@ -17,7 +17,7 @@ with con:
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT  *   FROM    HTTP,TFBS,GENE,GENE2TFBS 
-                                WHERE  GENE.alt_name LIKE '%s'
+                                WHERE  GENE.alt_name LIKE '%%%s%'
                                 AND  GENE.gene_id = GENE2TFBS.gene_id
                                 AND GENE2TFBS.TFBS_ID = TFBS.TFBS_ID 
                                 AND CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
