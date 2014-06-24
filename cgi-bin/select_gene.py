@@ -24,8 +24,7 @@ with con:
     rows = cur.fetchall()
     for row in rows:
     	print("<a href='lookup_gene.py?gene_id=%s'>%s,</a>" % (row['alt_name'],row['gene_id']),
-
-
-    print("</div>")
+	
+	print("</div>")
     genes.drawpic()
 print(yate.include_footer(""))
