@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python 
 
 import MySQLdb as mdb
 import cgi
@@ -21,7 +21,7 @@ with con:
                                 AND  GENE.gene_id = GENE2TFBS.gene_id
                                 AND GENE2TFBS.TFBS_ID = TFBS.TFBS_ID 
                                 AND CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                                ORDER BY TFBS.organism,TFBS.disease,TFBS.experiment""" % (form_data.upper()))
+                                ORDER BY TFBS.organism,TFBS.disease,TFBS.experiment ORDER by GENE.gene_id""" % (form_data.upper()))
     rows = cur.fetchall()
     
     for row in rows:
