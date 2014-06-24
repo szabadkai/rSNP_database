@@ -30,7 +30,7 @@ body {
 
 
 /* ** ** Common Addative Classes ** ** */
-.fixed80perc {width: 80%}
+.fixed60perc {width: 60%}
 .left, .float_left  { float:left    }
 .right, .float_right { float:right  }
 .clear { clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}
@@ -120,7 +120,7 @@ table,td,th{
 
 #sidebar{
     padding:20px;
-    width:200px;
+    width:20%;
     float:right;
 }
 .tiptext {
