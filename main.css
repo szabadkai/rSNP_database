@@ -30,6 +30,7 @@ body {
 
 
 /* ** ** Common Addative Classes ** ** */
+.fixed800 {width: 800px}
 .left, .float_left  { float:left    }
 .right, .float_right { float:right  }
 .clear { clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}
