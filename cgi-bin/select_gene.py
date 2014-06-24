@@ -18,13 +18,14 @@ with con:
     print '<div class="input_field">'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT DISTINCT( GENE.alt_name), GENE.gene_id    
-    				FROM    GENE    
-    				WHERE  GENE.alt_name LIKE '%%%s%%';""" % (form_data.upper()))
+					FROM    GENE    
+					WHERE  GENE.alt_name LIKE '%%%s%%';""" % (form_data.upper()))
 
-    rows = cur.fetchall()
-    for row in rows:
-    	print("<a href='lookup_gene.py?gene_id=%s'>%s</a>" % (row['gene_id'],row['alt_name'])),
-		print (","),
+	rows = cur.fetchall()
+	for row in rows:
+		print("<a href='lookup_gene.py?gene_id=%s'>%s</a>" % (row['gene_id'],row['alt_name'])),
+	print (","),
+
 	print("</div>")
-    genes.drawpic()
+	genes.drawpic()
 print(yate.include_footer(""))
