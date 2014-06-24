@@ -7,7 +7,7 @@ from GenePic import *
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-form_data = cgi.FieldStorage().getvalue('gene')
+form_data = cgi.FieldStorage().getvalue('gene_id')
 
 print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
@@ -18,7 +18,7 @@ with con:
     print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT  *   FROM    HTTP,TFBS,GENE,GENE2TFBS 
-                                WHERE  GENE.alt_name LIKE '%%%s%%'
+                                WHERE  GENE.gene_id = %s
                                 AND  GENE.gene_id = GENE2TFBS.gene_id
                                 AND GENE2TFBS.TFBS_ID = TFBS.TFBS_ID 
                                 AND CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
@@ -33,7 +33,5 @@ with con:
         genes.add(row['alt_name'], row['peak_start'], row['peak_stop'], row['GENE.start'])
 
     print("</table></div>")
-
     genes.drawpic()
-
 print(yate.include_footer(""))
