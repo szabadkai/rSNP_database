@@ -25,7 +25,6 @@ with con:
     for row in rows:
     	print("<a href='lookup_gene.py?gene_id=%s'>%s</a>" % (row['gene_id'],row['alt_name'])),
     	print ",",
-	
-	print("</div>")
     genes.drawpic()
+print("</div>")
 print(yate.include_footer(""))
