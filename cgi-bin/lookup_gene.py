@@ -22,7 +22,7 @@ with con:
                                 AND  GENE.gene_id = GENE2TFBS.gene_id
                                 AND GENE2TFBS.TFBS_ID = TFBS.TFBS_ID 
                                 AND CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                                ORDER BY TFBS.organism,TFBS.disease,TFBS.experiment ORDER by GENE.gene_id""" % (form_data.upper()))
+                                ORDER BY TFBS.organism,GENE.gene_id,TFBS.disease,TFBS.experiment""" % (form_data.upper()))
     rows = cur.fetchall()
     for row in rows:
         row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s'target=\"_blank\">%s</a></div>" % (row['TFBS_ID'],row['TFBS_ID'],row['TFBS_ID'],row['alt_name'])
