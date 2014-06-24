@@ -15,7 +15,7 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 genes = GenePic()
 
 with con:
-    print '<div class="left fixed80perc">'
+    print '<div class="left fixed60perc">'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT DISTINCT( GENE.alt_name), GENE.gene_id    
     				FROM    GENE    
