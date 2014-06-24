@@ -3,7 +3,7 @@
 import MySQLdb as mdb
 import cgi
 import yate
-
+from GenePic import *
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
@@ -12,6 +12,7 @@ form_data = cgi.FieldStorage().getvalue('gene')
 print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
 
+genes = GenePic()
 
 with con:
     print '<div class="input_field"><table>'
@@ -23,11 +24,16 @@ with con:
                                 AND CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
                                 ORDER BY TFBS.organism,TFBS.disease,TFBS.experiment ORDER by GENE.gene_id""" % (form_data.upper()))
     rows = cur.fetchall()
-    
     for row in rows:
         row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s'target=\"_blank\">%s</a></div>" % (row['TFBS_ID'],row['TFBS_ID'],row['TFBS_ID'],row['alt_name'])
         print "<th>%s</th>" % row['TFBS_ID']
         print "<th>%s %s</th>" % (row['organism'],row['disease'])
         print "<th><a href='%s'>%s<a></th></tr>" % (row['http'],row['TFBS.experiment'])
-    print("</table></div>")   
+	
+        genes.add(row['alt_name'], row['peak_start'], row['peak_stop'], row['GENE.start'])
+
+    print("</table></div>")
+
+    genes.drawpic()
+
 print(yate.include_footer(""))
