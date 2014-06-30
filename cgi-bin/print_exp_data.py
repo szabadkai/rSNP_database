@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python 
 
 import MySQLdb as mdb
 import cgi
@@ -30,7 +30,7 @@ with con:
     print "<th>GEO</th></thead>"
 
     for row in rows:
-        print "<tr>"
+        row['TFBS_ID']="<a href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a>" % ((row['TFBS_ID'],) * 2)
         for col in header_order:
             print "<th>%s</th>" % row[col]
         print "<th><a href='%s'>LINK<a></th>" % row['http']    
