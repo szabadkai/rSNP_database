@@ -20,7 +20,7 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 field = cgi.FieldStorage().getvalue('SNPs')
 
 header_order = ['rs_ID','TFBS_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','similar_TFBS','matrix_id'] 
-header={'rs_ID' :'SNP ID' ,'TFBS_ID' : 'TFBS' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele','similar_TFBS':'similar_TFBS,' 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','matrix_id':'MATRIX'}
+header={'rs_ID' :'SNP ID' ,'TFBS_ID' : 'TFBS' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele','similar_TFBS':'similar_TFBS', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','matrix_id':'MATRIX'}
 
 print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
