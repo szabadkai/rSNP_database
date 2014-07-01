@@ -31,9 +31,8 @@
 <div id="tabs">
   <ul>
     <li><a href="#tabs-1">SNP view</a></li>
-    <li><a href="#tabs-2">Experiment view</a></li>
-    <li><a href="#tabs-3">BED view</a></li>
-    <li><a href="#tabs-4">Gene view</a></li>
+    <li><a href="#tabs-2">BED view</a></li>
+    <li><a href="#tabs-3">Gene view</a></li>
   </ul>
   <div id="tabs-1">
     <form action="./cgi-bin/print_rsnp_data.py" method="POST" enctype="application/x-www-form-urlencoded">
@@ -42,16 +41,6 @@
       <input type=submit value="Select"></form>
       </div>
   <div id="tabs-2">
-    <form action="./cgi-bin/print_exp_data.py" method="GET" enctype="application/x-www-form-urlencoded">
-      <select id="exp" name="exp" >
-      <?php
-      $txt_file    = file_get_contents('./DATA/exp.txt');
-      $rows        = explode("\n", $txt_file);
-      foreach($rows as $row){ echo $row; } ?>
-      </select> 
-      <input type=submit value="Select"></form>
-      </div>
-  <div id="tabs-3">
     <form action="./cgi-bin/uploadbed.py" enctype="multipart/form-data" method="post">
       Upload you BED file to compare with other Chip-seq experiments.<br>
       <input type="file" id="bed" name="bed" value="Upload BED file"><br>
@@ -62,7 +51,7 @@
       <input type="submit" value="Upload and run analysis"><br><br><br>
       </form>
       </div>
-  <div id="tabs-4">
+  <div id="tabs-3">
     <form action="./cgi-bin/select_gene.py" enctype="multipart/form-data" method="POST">
       Choose your gene of interest!<br>
       <textarea id="gene" class="reset" rows="1" cols="50" name="gene">HLA</textarea><br>
