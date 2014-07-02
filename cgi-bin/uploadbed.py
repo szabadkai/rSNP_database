@@ -30,11 +30,28 @@ else:
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
+# SQL query
+
+con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
+
+with con:
+    cur = con.cursor(mdb.cursors.DictCursor)
+    cur.execute(""" SELECT * FROM TFBS,HTTP 
+                    WHERE TFBS.experiment='%s' AND 
+                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data)
+    rows = cur.fetchall()
+
+
+
+
+
+
+
 # HTML output
 
 print(yate.start_response())
-print(yate.include_header(''))  
-print type(bedfile)
+print(yate.include_header('')) 
+ 
 userfile = BedTool(tmpname)
 mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]

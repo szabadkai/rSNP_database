@@ -25,6 +25,9 @@
 <div class="topbar">
   <div class="logo">
      <a href="http://emboss.abc.hu/rsnpdb/"><img src="logo2.png" alt="logo-rsnpdb" height="40"></a>
+     <div name="logo">
+        collection of human regulatory single nucleotide polimorfisms from chip-seq data
+     </div>
   </div>
 </div>
 
