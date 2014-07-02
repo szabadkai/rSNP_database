@@ -30,16 +30,16 @@ else:
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
-# SQL query
+# # SQL query
 
-con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
+# con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-with con:
-    cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT * FROM TFBS,HTTP 
-                    WHERE TFBS.experiment='%s' AND 
-                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data['bed'])
-    rows = cur.fetchall()
+# with con:
+#     cur = con.cursor(mdb.cursors.DictCursor)
+#     cur.execute(""" SELECT * FROM TFBS,HTTP 
+#                     WHERE TFBS.experiment='%s' AND 
+#                     CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data['bed'])
+#     rows = cur.fetchall()
 
 
 
