@@ -38,7 +38,7 @@ with con:
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,HTTP 
                     WHERE TFBS.experiment='%s' AND 
-                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data)
+                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data['bed'])
     rows = cur.fetchall()
 
 
