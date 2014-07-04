@@ -35,11 +35,10 @@ for form_data in split_input(field):
         print '<div class="tfbs_view"><table><tr>'
         cur = con.cursor(mdb.cursors.DictCursor)
         cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP,RS
-                        RS.rs_ID = TFBS.TFBS_ID AND
+                        RS.rs_ID = '%s' AND
                         WHERE TFBS_ID=RS.TFBS_ID AND 
                         TFBS.peak = ORTHOLOGS.peak AND
-                        CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                        ;""" % form_data)
+                        CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment ;""" % form_data)
         rows = cur.fetchall()
         for col in header_order:
             print "<td>%s</td>" % header[col]
