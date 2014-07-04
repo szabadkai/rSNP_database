@@ -28,8 +28,10 @@ form_data = cgi.FieldStorage().getvalue('id')
 
 print(yate.start_response())
 print(yate.include_header(''))  
+print"<script src='../js/tfbs.js'></script>"
+
 with con: 
-    print '<div class="input_field"><table><tr>'
+    print '<div><table><tr>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
@@ -70,7 +72,7 @@ with con:
     rows = cur.fetchall()
 
     if len(rows)>0:
-        print '<div><table><tr>'
+        print '<div class="rsnp_view"><table><tr>'
         for col in header_order:
             print "<td>%s</td>" % header[col]
         print "</tr>"
@@ -99,7 +101,7 @@ with con:
         print("</table></div>")
     else:
         print"No SNP in this TFBS"
-print x
+print "<br>"+x
 print(yate.include_footer({""}))
 
 
