@@ -102,7 +102,6 @@ p {margin:0 0 1.52em;}
 table{
     border-collapse:collapse;
     margin:0px;padding:0px;
-  width:100%;
   box-shadow: 10px 10px 5px #888888;
   border:1px solid #ffffff;
   
@@ -162,6 +161,8 @@ table,td,th{
   color: white;
   float: right;
 }
+
+
 
 
 tr:last-child td:last-child {
