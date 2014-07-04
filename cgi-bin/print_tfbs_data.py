@@ -71,11 +71,11 @@ with con:
     rows = cur.fetchall()
 
     if len(rows)>0:
-        print '<div class="input_field"><table>'
-        print "<thead><tr>"
+        print '<div><table>'
+        print "<tr>"
         for col in header_order:
-            print "<th>%s</th>" % header[col]
-        print "</tr></thead>"
+            print "<td>%s</td>" % header[col]
+        print "</tr>"
 
         
             
@@ -96,7 +96,7 @@ with con:
             row['orto_bases'] = ''.join(temp) 
             print "<tr>"
             for col in header_order:
-                print "<th>%s</th>" % row[col]
+                print "<td>%s</td>" % row[col]
             print "</tr>"
         print("</table></div>")
     else:
