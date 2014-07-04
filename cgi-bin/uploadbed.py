@@ -41,12 +41,6 @@ tmpname = putToTmp(bedfile) # get the name of the tmp file
 #                     CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data['bed'])
 #     rows = cur.fetchall()
 
-
-
-
-
-
-
 # HTML output
 
 print(yate.start_response())

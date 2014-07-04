@@ -4,6 +4,9 @@ import MySQLdb as mdb
 import cgi
 import yate
 
+organisms=('hg19','panTro2','gorGor1','ponAbe2','rheMac2','papHam1','calJac1','tarSyr1','micMur1','otoGar1','tupBel1','mm9','rn4','dipOrd1','cavPor3','speTri1','oryCun2','ochPri2','vicPac1','turTru1','bosTau4','equCab2','felCat3','canFam2','myoLuc1','pteVam1','eriEur1','sorAra1','loxAfr3','proCap1','echTel1','dasNov2','choHof1','macEug1','monDom5','ornAna1')
+
+
 def split_input(field):
     a=[]
     b=[]
@@ -16,8 +19,8 @@ def split_input(field):
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
-header_order = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','organism','chr','start','stop','similar_TFBS', 'target_perc','p']
-header = {'TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif','organism':'Organism','chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
+header_order = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','chr','start','stop','similar_TFBS', 'target_perc','p']
+header = {'TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
 
 form_data = cgi.FieldStorage().getvalue('id')
 
@@ -59,6 +62,7 @@ with con:
 
     header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases','matrix_id'] 
     header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs','matrix_id':'MATRIX'}
+    
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
                     FROM TFBS,RS 
@@ -84,6 +88,11 @@ with con:
             row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
             row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
             row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a></div>" % ((row['TFBS_ID'],) * 4)
+            temp=[]
+            count=0
+            for letter in row['orthologs']:
+                temp.append("<a href='#' title='%s'>%s</a>",letter,organisms[count])
+            row['orto_bases'] = ''.join(temp) 
             print "<tr>"
             for col in header_order:
                 print "<th>%s</th>" % row[col]
