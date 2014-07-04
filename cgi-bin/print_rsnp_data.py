@@ -22,7 +22,7 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 header_order = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','chr','start','stop','similar_TFBS', 'target_perc','p']
 header = {'TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
 
-field = cgi.FieldStorage().getvalue('id')
+field = cgi.FieldStorage().getvalue('SNPs')
 
 
 
