@@ -90,7 +90,7 @@ with con:
             row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a></div>" % ((row['TFBS_ID'],) * 4)
             temp=[]
             count=0
-            for letter in row['orthologs']:
+            for letter in row['orto_bases']:
                 temp.append("<a href='#' title='%s'>%s</a>",letter,organisms[count])
             row['orto_bases'] = ''.join(temp) 
             print "<tr>"
