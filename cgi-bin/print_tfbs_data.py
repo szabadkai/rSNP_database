@@ -71,8 +71,7 @@ with con:
     rows = cur.fetchall()
 
     if len(rows)>0:
-        print '<div><table>'
-        print "<tr>"
+        print '<div><table><tr>'
         for col in header_order:
             print "<td>%s</td>" % header[col]
         print "</tr>"
