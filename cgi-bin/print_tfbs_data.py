@@ -37,7 +37,7 @@ with con:
                     WHERE TFBS_ID='%s' AND 
                     TFBS.peak = ORTHOLOGS.peak AND
                     CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                    ;""" % str(form_data))
+                    ;""" % form_data)
     rows = cur.fetchall()
     for col in header_order:
         print "<td>%s</td>" % header[col]
