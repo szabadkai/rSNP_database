@@ -56,7 +56,7 @@ for form_data in split_input(field):
         
         print("</table></div><br>")
 
-        x= "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak'])
+        #x= "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak'])
 
        
         header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases','matrix_id'] 
@@ -99,7 +99,7 @@ for form_data in split_input(field):
             print("</table></div>")
         else:
             print"No SNP in this TFBS"
-    print "<br>"+x
+    #print "<br>"+x
 print(yate.include_footer({""}))
 
 
