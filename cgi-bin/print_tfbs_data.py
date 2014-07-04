@@ -91,7 +91,7 @@ with con:
             temp=[]
             count=0
             for letter in row['orto_bases']:
-                temp.append("<a href='#' title='%s'>%s</a>",letter,organisms[count])
+                temp.append("<a href='#' title='%s'>%s</a>" % (letter,organisms[count]))
             row['orto_bases'] = ''.join(temp) 
             print "<tr>"
             for col in header_order:
