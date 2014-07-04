@@ -15,7 +15,7 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 genes = GenePic()
 
 with con:
-    print '<div><table><tr>'
+    print '<div><table><tr><td>gene</td><td>celltype</td><td>antibody</td></tr><tr>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT  *   FROM    HTTP,TFBS,GENE,GENE2TFBS 
                                 WHERE  GENE.gene_id = %s
