@@ -29,7 +29,7 @@ form_data = cgi.FieldStorage().getvalue('id')
 print(yate.start_response())
 print(yate.include_header(''))  
 with con: 
-    print '<div class="input_field"><table>'
+    print '<div class="input_field"><table><tr>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
@@ -37,17 +37,16 @@ with con:
                     CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
                     ;""" % str(form_data))
     rows = cur.fetchall()
-    print "<thead>"
     for col in header_order:
-        print "<th>%s</th>" % header[col]
-    print "<th>GEO</th></thead>"
+        print "<td>%s</td>" % header[col]
+    print "<td>GEO</td></tr>"
     for row in rows:
         row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
 
         print "<tr>"
         for col in header_order:
-            print "<th>%s</th>" % row[col]
-        print "<th><a href='%s'>LINK<a></th>" % row['http']    
+            print "<td>%s</td>" % row[col]
+        print "<td><a href='%s'>LINK<a></td>" % row['http']    
         print "</tr>"
     else:
         pass

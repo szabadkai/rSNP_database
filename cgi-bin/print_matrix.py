@@ -27,7 +27,7 @@ with con:
 	print pos+"\t"+minor+"\t"+major
 	print '<table><tr>'
 	for col in ['Position','A','C','G','T']:
-		print "<th>%s</th>" % col
+		print "<td>%s</td>" % col
 	print "</tr>"
 	count=1
 
