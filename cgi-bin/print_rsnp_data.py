@@ -30,31 +30,32 @@ print(yate.start_response())
 print(yate.include_header(''))  
 print"<script src='../js/tfbs.js'></script>"
 
-with con: 
-    print '<div class="tfbs_view"><table><tr>'
-    cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP,RS
-                    RS.rs_ID = TFBS.TFBS_ID AND
-                    WHERE TFBS_ID=RS.TFBS_ID AND 
-                    TFBS.peak = ORTHOLOGS.peak AND
-                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                    ;""" % form_data)
-    rows = cur.fetchall()
-    for col in header_order:
-        print "<td>%s</td>" % header[col]
-    print "<td>GEO</td></tr>"
-    for row in rows:
-        row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
-
-        print "<tr>"
+for form_data in split_input(field):
+    with con: 
+        print '<div class="tfbs_view"><table><tr>'
+        cur = con.cursor(mdb.cursors.DictCursor)
+        cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP,RS
+                        RS.rs_ID = TFBS.TFBS_ID AND
+                        WHERE TFBS_ID=RS.TFBS_ID AND 
+                        TFBS.peak = ORTHOLOGS.peak AND
+                        CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
+                        ;""" % form_data)
+        rows = cur.fetchall()
         for col in header_order:
-            print "<td>%s</td>" % row[col]
-        print "<td><a href='%s'>LINK<a></td>" % row['http']    
-        print "</tr>"
-    else:
-        pass
-    
-    print("</table></div><br>")
+            print "<td>%s</td>" % header[col]
+        print "<td>GEO</td></tr>"
+        for row in rows:
+            row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
+
+            print "<tr>"
+            for col in header_order:
+                print "<td>%s</td>" % row[col]
+            print "<td><a href='%s'>LINK<a></td>" % row['http']    
+            print "</tr>"
+        else:
+            pass
+        
+        print("</table></div><br>")
 
     x= "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a><br>" % (rows[0]['peak'],rows[0]['peak'])
 
