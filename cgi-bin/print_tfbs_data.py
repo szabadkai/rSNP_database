@@ -31,7 +31,7 @@ print(yate.include_header(''))
 print"<script src='../js/tfbs.js'></script>"
 
 with con: 
-    print '<div><table><tr>'
+    print '<div class="tfbs_view"><table><tr>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                     WHERE TFBS_ID='%s' AND 
