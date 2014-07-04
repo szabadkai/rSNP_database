@@ -97,4 +97,4 @@ for form_data in split_input(field):
     #     else:
     #         print"No SNP in this TFBS"
     # #print "<br>"+x
-print(yate.include_footer({""}))
+print(yate.include_footer({"dgsg"}))
