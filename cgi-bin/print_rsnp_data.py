@@ -4,10 +4,6 @@ import MySQLdb as mdb
 import cgi
 import yate
  
-con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
-field = cgi.FieldStorage().getvalue('SNPs')
-header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases','matrix_id'] 
-header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs','matrix_id':'MATRIX'}
 
 def split_input(field):
     a=[]
@@ -24,8 +20,13 @@ print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
 
 
-
-    
+with con:
+    print '<div><table><tr>'
+    for col in header_order:
+        print "<td>%s</td>" % header[col]
+    print "</tr>"
+        
+    for form_data in split_input(field):
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
                     FROM TFBS,RS 
