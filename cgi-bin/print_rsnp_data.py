@@ -33,10 +33,7 @@ with con:
         
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
-        cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
-                        FROM TFBS,RS 
-                        WHERE TFBS.TFBS_ID IN (SELECT TFBS_ID FROM TFBS WHERE TFBS.TFBS_ID = RS.TFBS_ID AND RS.rs_num = '%s') 
-                        AND TFBS.TFBS_ID = RS.TFBS_ID limit 1;""" % form_data)
+        cur.execute(""" SELECT * FROM TFBS, RS WHERE TFBS.TFBS_ID = (select TFBS_ID from RS where rs_num = '%')  AND TFBS.TFBS_ID = RS.TFBS_ID;""" % form_data)
 
         rows = cur.fetchall()
 
