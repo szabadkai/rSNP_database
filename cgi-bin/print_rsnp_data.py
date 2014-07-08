@@ -3,7 +3,10 @@
 import MySQLdb as mdb
 import cgi
 import yate
- 
+
+
+header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases','matrix_id'] 
+header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs','matrix_id':'MATRIX'}
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 def split_input(field):
