@@ -34,9 +34,9 @@ with con:
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
         cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
-                        FROM TFBS,RS  (SELECT TFBS_ID FROM TFBS WHERE TFBS.TFBS_ID = RS.TFBS_ID AND RS.rs_num = '%s') AS DUMMY
-                        WHERE TFBS.TFBS_ID = DUMMY
-                        AND TFBS.TFBS_ID = RS.TFBS_ID ;""" % form_data)
+                        FROM TFBS,RS 
+                        WHERE TFBS.TFBS_ID = (SELECT TFBS_ID FROM TFBS WHERE TFBS.TFBS_ID = RS.TFBS_ID AND RS.rs_num = '%s') 
+                        AND TFBS.TFBS_ID = RS.TFBS_ID limit 1;""" % form_data)
 
         rows = cur.fetchall()
 
