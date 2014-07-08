@@ -61,6 +61,7 @@ with con:
     header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs','matrix_id':'MATRIX'}
     
     cur = con.cursor(mdb.cursors.DictCursor)
+    
     cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
                     FROM TFBS,RS 
                     WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % form_data)
