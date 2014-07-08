@@ -4,6 +4,7 @@ import MySQLdb as mdb
 import cgi
 import yate
  
+con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
 def split_input(field):
     a=[]
