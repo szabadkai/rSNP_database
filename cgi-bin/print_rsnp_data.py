@@ -35,7 +35,8 @@ with con:
         cur = con.cursor(mdb.cursors.DictCursor)
         cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
                         FROM TFBS,RS 
-                        WHERE TFBS.TFBS_ID= (SELECT TFBS_ID FROM TFBS WHERE TFBS.TFBS_ID = RS.TFBS_ID AND RS.num = '%s') AND TFBS.TFBS_ID = RS.TFBS_ID ;""" % form_data)
+                        WHERE TFBS.TFBS_ID = (SELECT TFBS_ID FROM TFBS WHERE TFBS.TFBS_ID = RS.TFBS_ID AND RS.num = '%s') 
+                        AND TFBS.TFBS_ID = RS.TFBS_ID ;""" % form_data)
 
         rows = cur.fetchall()
 
