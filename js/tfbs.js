@@ -2,6 +2,6 @@ $(document).ready(function() {
 	$(".rsnp_view").hide();
 
 	$(".tfbs_view").on("click", function(){
-		$(this).children().last().slideToggle();
+		$(this).next('rsnp_view').slideToggle();
 	});
 });
