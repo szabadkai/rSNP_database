@@ -6,12 +6,11 @@ def print_tfbs(tfbs_IDs):
     header_tfbs = {'disease':'celltype','experiment':'antibody','snp_count':'SNP count','GEO':'GEO','orthologs':'peak orthologs','TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
     print"<script src='../js/tfbs.js'></script>"
 
+
     for tfbs_ID in tfbs_IDs:
-        print '<div class="tfbs_view"><table>'
-        print "<tr>"
+        print '<div class="tfbs_view"><table><tr>'
         for col in header_order_tfbs:
             print "<td>%s</td>" % header_tfbs[col]
-
 
         with con:
             cur = con.cursor(mdb.cursors.DictCursor)
