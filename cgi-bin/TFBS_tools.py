@@ -26,9 +26,7 @@ def print_tfbs(form_data):
             print "<tr>"
             for col in header_order_tfbs:
                 print "<td>%s</td>" % row[col]
-        else:
-            print 'no snps :('
-        
+               
         print("</tr></table></div><br>")
 
 
@@ -80,4 +78,4 @@ def print_tfbs(form_data):
                 print "</tr>"
             print("</table></div>")
         else:
-            pass
+            print "sorry no snps :("
