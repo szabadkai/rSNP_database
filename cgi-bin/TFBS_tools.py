@@ -35,7 +35,7 @@ def print_tfbs(tfbs_ID):
             for col in header_order_tfbs:
                 print "<td>%s</td>" % row[col]
                
-        print("</tr><tr class="rsnp_view">")
+        print "</tr><tr class='rsnp_view'>"
 
 
        
