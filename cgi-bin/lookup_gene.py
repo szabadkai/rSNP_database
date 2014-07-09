@@ -16,7 +16,6 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 genes = GenePic()
 
 with con:
-    print '<div><table><tr><td>gene</td><td>celltype</td><td>antibody</td><td>SNP count</td></tr><tr>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT  TFBS.TFBS_ID   FROM    TFBS,GENE,GENE2TFBS 
                                 WHERE  GENE.gene_id = %s
@@ -28,5 +27,5 @@ with con:
         temp.append(row['TFBS_ID'])
     print_tfbs(temp)
 
-    genes.drawpic()
+    #genes.drawpic()
 print(yate.include_footer(""))
