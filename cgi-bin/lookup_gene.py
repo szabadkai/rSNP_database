@@ -1,6 +1,4 @@
 #!/usr/bin/env python 
-
-import MySQLdb as mdb
 import cgi
 import yate
 from GenePic import *
