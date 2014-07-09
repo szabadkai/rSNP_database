@@ -4,7 +4,7 @@ import MySQLdb as mdb
 import cgi
 import yate
 from GenePic import *
-from TFBS_tools import *
+from TFBS_tools import print_tfbs
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
