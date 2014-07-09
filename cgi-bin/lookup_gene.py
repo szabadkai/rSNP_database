@@ -23,8 +23,8 @@ with con:
     rows = cur.fetchall()
     temp = []
     for row in rows:
-        temp.append(row['TFBS_ID'])
-    print_tfbs(temp)
+        print row['TFBS_ID']
+    #print_tfbs(temp)
 
     #genes.drawpic()
 print(yate.include_footer(""))
