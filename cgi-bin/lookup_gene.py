@@ -15,7 +15,7 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 genes = GenePic()
 
 with con:
-    print '<div><table><tr><td>gene</td><td>celltype</td><td>antibody</td></tr><tr>'
+    print '<div><table><tr><td>gene</td><td>celltype</td><td>antibody</td><td>SNP count</td></tr><tr>'
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute( """SELECT  *   FROM    HTTP,TFBS,GENE,GENE2TFBS 
                                 WHERE  GENE.gene_id = %s
@@ -25,12 +25,21 @@ with con:
                                 ORDER BY TFBS.organism,GENE.gene_id,TFBS.disease,TFBS.experiment""" % (form_data.upper()))
     rows = cur.fetchall()
     for row in rows:
+        temp = row['TFBS_ID']
         row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s'target=\"_blank\">%s</a></div>" % (row['TFBS_ID'],row['TFBS_ID'],row['TFBS_ID'],row['alt_name'])
         print "<td>%s</td>" % row['TFBS_ID']
         print "<td>%s</td>" % (row['disease'])
         x = row['TFBS.experiment'].split('_')[-1]
-        print "<td><a href='%s'>%s<a></td></tr>" % (row['http'],x)
-	
+        print "<td><a href='%s'>%s<a></td>" % (row['http'],x)
+        with con:
+            cur = con.cursor(mdb.cursors.DictCursor)
+            cur.execute(""" SELECT COUNT(RS.rs_ID)
+                            FROM TFBS,RS
+                            WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % temp)
+
+        snp_count = cur.fetchone()['COUNT(RS.rs_ID)']
+        print "<td>%s</td></tr>" % snp_count
+
         genes.add(row['alt_name'], row['peak_start'], row['peak_stop'], row['GENE.start'])
 
     print("</table></div>")
