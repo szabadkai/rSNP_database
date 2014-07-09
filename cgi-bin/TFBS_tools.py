@@ -8,9 +8,9 @@ def print_tfbs(tfbs_IDs):
     print"<script src='../js/tfbs.js'></script>"
 
     print '<table>'
-            print "<tr>"
-            for col in header_order_tfbs:
-                print "<td>%s</td>" % header_tfbs[col]
+    print "<tr>"
+    for col in header_order_tfbs:
+        print "<td>%s</td>" % header_tfbs[col]
     
     for tfbs_ID in tfbs_IDs:
         with con:
