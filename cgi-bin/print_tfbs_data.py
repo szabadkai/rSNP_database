@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import cgi
-from mysql_open import *
 import yate
 from TFBS_tools import print_tfbs
 
