@@ -24,7 +24,10 @@ with con:
     temp = []
     for row in rows:
         temp.append(row['TFBS_ID'])
-    print_tfbs(temp)
+
+    for a in temp:
+        print a
+    #print_tfbs(temp)
 
     #genes.drawpic()
 print(yate.include_footer(""))
