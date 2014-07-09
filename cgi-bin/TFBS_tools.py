@@ -16,26 +16,28 @@ def print_tfbs(tfbs_ID):
         snp_count = cur.fetchone()['COUNT(RS.rs_ID)']
 
         print '<table>'
+        print "<tr>"
+        for col in header_order_tfbs:
+            print "<td>%s</td>" % header_tfbs[col]
+
         cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                         WHERE TFBS_ID='%s' AND 
                         TFBS.peak = ORTHOLOGS.peak AND
                         CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
                         ;""" % tfbs_ID)
         rows = cur.fetchall()
-        print "<tr>"
-        for col in header_order_tfbs:
-            print "<td>%s</td>" % header_tfbs[col]
+       
         for row in rows:
             row['experiment'] = row['experiment'].split('_')[-1]
             row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
             row['GEO']= "<a href='%s'>LINK<a>" % row['http']
             row['orthologs'] = "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a>" % (rows[0]['peak'],rows[0]['peak'])
             row['snp_count'] = snp_count
-            print "<div class='tfbs_view'><tr>"
+            print "<tr>"
             for col in header_order_tfbs:
                 print "<td>%s</td>" % row[col]
                
-        print "</tr><tr>"
+        print "</tr>"
 
 
        
@@ -52,7 +54,7 @@ def print_tfbs(tfbs_ID):
         rows = cur.fetchall()
 
         if len(rows)>0:
-            print "<table class='rsnp_view'><tr>"
+            print "<tr class='rsnp_view'>"
             for col in header_order:
                 print "<td>%s</td>" % header[col]
             print "</tr>"
@@ -80,10 +82,10 @@ def print_tfbs(tfbs_ID):
                 ######################################
 
 
-                print "<tr>"
+                print "<tr class='rsnp_view'>"
                 for col in header_order:
                     print "<td>%s</td>" % row[col]
                 print "</tr>"
-            print("</table></tr></div></table>")
+            print("</table>")
         else:
             pass
