@@ -12,7 +12,7 @@ def print_tfbs(tfbs_ID):
         cur.execute(""" SELECT COUNT(RS.rs_ID)
                         FROM TFBS,RS
                         WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % tfbs_ID)
-        snp_count = cur.fetchall()[0]
+        snp_count = cur.fetchone()
 
         print '<div class="tfbs_view"><table>'
         cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
