@@ -84,6 +84,6 @@ def print_tfbs(tfbs_ID):
                 for col in header_order:
                     print "<td>%s</td>" % row[col]
                 print "</tr>"
-            print("</table></tr>")
+            print("</table></tr></table>")
         else:
             pass
