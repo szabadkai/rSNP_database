@@ -15,7 +15,7 @@ def print_tfbs(tfbs_ID):
 
         snp_count = cur.fetchone()['COUNT(RS.rs_ID)']
 
-        print '<div class="tfbs_view"><table>'
+        print '<table><div class="tfbs_view">'
         cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                         WHERE TFBS_ID='%s' AND 
                         TFBS.peak = ORTHOLOGS.peak AND
