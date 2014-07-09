@@ -34,7 +34,7 @@ def print_tfbs(tfbs_ID):
             for col in header_order_tfbs:
                 print "<td>%s</td>" % row[col]
                
-        print("</tr></table></div><br>")
+        print("</tr></table></div>")
 
 
        
