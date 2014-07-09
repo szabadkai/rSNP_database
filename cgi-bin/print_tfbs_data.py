@@ -17,4 +17,4 @@ def split_input(field):
 form_data = cgi.FieldStorage().getvalue('id')
 print(yate.start_response())
 print(yate.include_header(''))  
-print_tfbs(form_data)
+print_tfbs([form_data])
