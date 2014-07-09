@@ -80,7 +80,7 @@ def print_tfbs(tfbs_ID):
                 ######################################
 
 
-                print "<tr class='rsnp_view'>"
+                print "<tr>"
                 for col in header_order:
                     print "<td>%s</td>" % row[col]
                 print "</tr>"
