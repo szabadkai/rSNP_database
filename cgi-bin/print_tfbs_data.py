@@ -19,6 +19,3 @@ print(yate.start_response())
 print(yate.include_header(''))  
 print_tfbs(form_data)
 print(yate.include_footer({""}))
-
-
-
