@@ -1,20 +1,25 @@
-def print_tfbs(form_data):
+def print_tfbs(tfbs_ID):
     import MySQLdb as mdb
     con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
     from mysql_open import *
     organisms=('hg19','panTro2','gorGor1','ponAbe2','rheMac2','papHam1','calJac1','tarSyr1','micMur1','otoGar1','tupBel1','mm9','rn4','dipOrd1','cavPor3','speTri1','oryCun2','ochPri2','vicPac1','turTru1','bosTau4','equCab2','felCat3','canFam2','myoLuc1','pteVam1','eriEur1','sorAra1','loxAfr3','proCap1','echTel1','dasNov2','choHof1','macEug1','monDom5','ornAna1')
-    header_order_tfbs = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','chr','start','stop','similar_TFBS', 'target_perc','p','GEO','orthologs']
-    header_tfbs = {'GEO':'GEO','orthologs':'peak orthologs','TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
+    header_order_tfbs = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','chr','start','stop','similar_TFBS', 'target_perc','p','GEO','orthologs','snp_count']
+    header_tfbs = {'snp_count':'SNP count','GEO':'GEO','orthologs':'peak orthologs','TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
     print"<script src='../js/tfbs.js'></script>"
 
-    with con: 
+    with con:
+        cur.execute(""" SELECT COUNT(RS.rs_ID)
+                        FROM TFBS,RS
+                        WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % tfbs_ID)
+        snp_count = cur.fetchall()[0]
+
         print '<div class="tfbs_view"><table>'
         cur = con.cursor(mdb.cursors.DictCursor)
         cur.execute(""" SELECT * FROM TFBS,ORTHOLOGS,HTTP 
                         WHERE TFBS_ID='%s' AND 
                         TFBS.peak = ORTHOLOGS.peak AND
                         CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
-                        ;""" % form_data)
+                        ;""" % tfbs_ID)
         rows = cur.fetchall()
         print "<tr>"
         for col in header_order_tfbs:
@@ -23,6 +28,7 @@ def print_tfbs(form_data):
             row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
             row['GEO']= "<a href='%s'>LINK<a>" % row['http']
             row['orthologs'] = "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a>" % (rows[0]['peak'],rows[0]['peak'])
+            row['snp_count'] = snp_count
             print "<tr>"
             for col in header_order_tfbs:
                 print "<td>%s</td>" % row[col]
@@ -39,7 +45,7 @@ def print_tfbs(form_data):
         
         cur.execute(""" SELECT RS.* ,TFBS.TFBS_ID,TFBS.matrix_id, TFBS.start, TFBS.stop, TFBS.strand
                         FROM TFBS,RS 
-                        WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % form_data)
+                        WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % tfbs_ID)
 
         rows = cur.fetchall()
 
@@ -78,4 +84,4 @@ def print_tfbs(form_data):
                 print "</tr>"
             print("</table></div>")
         else:
-            print "sorry no snps :("
+            pass
