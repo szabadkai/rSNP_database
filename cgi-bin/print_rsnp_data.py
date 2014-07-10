@@ -38,6 +38,10 @@ with con:
                 tfbs.append(i['TFBS_ID'])
         else:
             rsnp.append(form_data)
-    print_tfbs(tfbs)
-    print_rsnp(rsnp)
+    if len(tfbs) > 0:
+        print_tfbs(tfbs)
+    elif len(rsnp) > 0:
+        print_rsnp(rsnp)
+    else:
+        print "you are out of luck... :( \nTry arain if you will!"
 print(yate.include_footer(""))

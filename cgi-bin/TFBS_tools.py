@@ -98,8 +98,9 @@ def print_rsnp(rs_nums):
     print "<table><tr>"
     for col in header_order:
         print "<td>%s</td>" % header[col]
+
     for rs_num in rs_nums:
-        cur.execute(""" SELECT DISTINCT * FROM RS WHERE rs_num = %s;""" % rs_num)
+        cur.execute(""" SELECT * FROM RS WHERE rs_num = %s;""" % rs_num)
         rows = cur.fetchall()
 
       
