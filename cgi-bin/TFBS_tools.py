@@ -88,34 +88,35 @@ def print_tfbs(tfbs_IDs):
 
     print("</table>")
 
-def print_rsnp(rs_num):
+def print_rsnp(rs_nums):
     header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases'] 
     header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs','matrix_id':'MATRIX'}
     organisms=('hg19','panTro2','gorGor1','ponAbe2','rheMac2','papHam1','calJac1','tarSyr1','micMur1','otoGar1','tupBel1','mm9','rn4','dipOrd1','cavPor3','speTri1','oryCun2','ochPri2','vicPac1','turTru1','bosTau4','equCab2','felCat3','canFam2','myoLuc1','pteVam1','eriEur1','sorAra1','loxAfr3','proCap1','echTel1','dasNov2','choHof1','macEug1','monDom5','ornAna1')
     import MySQLdb as mdb
     con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
     cur = con.cursor(mdb.cursors.DictCursor)
-
-    cur.execute(""" SELECT DISTINCT * FROM RS WHERE rs_num = %s;""" % rs_num)
-    rows = cur.fetchall()
-
     print "<table><tr>"
     for col in header_order:
         print "<td>%s</td>" % header[col]
-    print "</tr>"             
-    for row in rows:
-        row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
-        ######################################
-        temp=[]
-        count=0
-        for letter in row['orto_bases']:
-            temp.append("<a href='#' title='%s'>%s</a>" % (organisms[count],letter))
-            count += 1
-        row['orto_bases'] = ''.join(temp) 
-        # jQueryUI to show organism in tooltip
-        ######################################
-        print "<tr>"
-        for col in header_order:
-            print "<td>%s</td>" % row[col]
-        print "</tr>"
+    for rs_num in rs_nums:
+        cur.execute(""" SELECT DISTINCT * FROM RS WHERE rs_num = %s;""" % rs_num)
+        rows = cur.fetchall()
+
+      
+        print "</tr>"             
+        for row in rows:
+            row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
+            ######################################
+            temp=[]
+            count=0
+            for letter in row['orto_bases']:
+                temp.append("<a href='#' title='%s'>%s</a>" % (organisms[count],letter))
+                count += 1
+            row['orto_bases'] = ''.join(temp) 
+            # jQueryUI to show organism in tooltip
+            ######################################
+            print "<tr>"
+            for col in header_order:
+                print "<td>%s</td>" % row[col]
+            print "</tr>"
     print "</table>"
