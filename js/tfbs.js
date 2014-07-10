@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	$(".rsnp_view").css("height:0px");
+	$(".rsnp_view").hide();
 
 	$(".tfbs_view").on("click", function(){
-		$(this).next().animate("height:50px");
+		$(this).next(".rsnp_view").slideToggle();
 	});
 });
