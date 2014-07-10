@@ -100,7 +100,8 @@ def print_rsnp(rs_nums):
         print "<td>%s</td>" % header[col]
 
     for rs_num in rs_nums:
-        cur.execute(""" SELECT * FROM RS WHERE rs_num = %s;""" % rs_num)
+        i=rs_num
+        cur.execute(""" SELECT * FROM RS WHERE rs_num = %s;""" % i)
         rows = cur.fetchall()
 
       
