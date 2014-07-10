@@ -48,7 +48,7 @@ def print_tfbs(tfbs_IDs):
             header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases','matrix_id'] 
             header={'rs_ID' :'SNP ID' , 'freq_major':'F Major', 'freq_min':'F Minor','major_al':'MAJOR allele', 'minor_al':'MINOR allele','rSNP_phastcons' :'SNP phascons score','orto_bases':'Orthologs','matrix_id':'MATRIX'}
             
-            cur.execute(""" SELECT RS.* TFBS.*
+            cur.execute(""" SELECT RS.*,TFBS.*
                             FROM TFBS,RS 
                             WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % tfbs_ID)
 
