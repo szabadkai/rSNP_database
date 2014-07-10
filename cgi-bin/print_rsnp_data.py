@@ -30,7 +30,7 @@ with con:
     tfbs = []
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
-        cur.execute(""" SELECT DISTINCT RS.TFBS_ID FROM TFBS, RS WHERE TFBS.TFBS_ID = (SELECT DISTINCT TFBS_ID FROM RS WHERE rs_num = '%s') AND TFBS.TFBS_ID = RS.TFBS_ID;""" % form_data)
+        cur.execute(""" SELECT DISTINCT RS.TFBS_ID FROM TFBS, RS WHERE TFBS.TFBS_ID IN (SELECT DISTINCT TFBS_ID FROM RS WHERE rs_num = '%s') AND TFBS.TFBS_ID = RS.TFBS_ID;""" % form_data)
         rows = cur.fetchall()
 
         if len(rows)>0:
