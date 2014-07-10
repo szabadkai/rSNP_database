@@ -96,7 +96,7 @@ def print_rsnp(rs_num):
     con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
     cur = con.cursor(mdb.cursors.DictCursor)
 
-    cur.execute(""" SELECT DISTINCT * FROM RS WHERE rs_num = %s;""" % form_data)
+    cur.execute(""" SELECT DISTINCT * FROM RS WHERE rs_num = %s;""" % rs_num)
     rows = cur.fetchall()
 
     print "<table><tr>"

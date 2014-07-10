@@ -26,17 +26,17 @@ print(yate.include_header("Here are your SNP(s), served fresh and hot!"))
 
 
 with con:
-        
+    rsnp,tfbs = []
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
         cur.execute(""" SELECT DISTINCT RS.TFBS_ID FROM TFBS, RS WHERE TFBS.TFBS_ID = (SELECT DISTINCT TFBS_ID FROM RS WHERE rs_num = '%s') AND TFBS.TFBS_ID = RS.TFBS_ID;""" % form_data)
         rows = cur.fetchall()
-        if len(rows)>0:
-            temp=[]
-            for i in rows:
-                temp.append(i['TFBS_ID'])
-            print_tfbs(temp)
-        else:
-            print_rsnp(form_data)
 
+        if len(rows)>0:
+            for i in rows:
+                tfbs.append(i['TFBS_ID'])
+        else:
+            rsnp.append(form_data)
+    print_tfbs(tfbs)
+    print_rsnp(rsnp)
 print(yate.include_footer(""))
