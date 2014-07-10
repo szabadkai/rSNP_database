@@ -23,8 +23,7 @@ with con:
 
     rows = cur.fetchall()
     for row in rows:
-    	print("<a href='lookup_gene.py?gene_id=%s'>%s</a>" % (row['gene_id'],row['alt_name'])),
-    	print ",",
-    genes.drawpic()
+    	print("<a href='lookup_gene.py?gene_id=%s'>%s</a>, " % (row['gene_id'],row['alt_name'])),
+    #genes.drawpic()
 print("</div>")
 print(yate.include_footer(""))

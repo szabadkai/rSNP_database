@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from TFBS_tools import print_tfbs
+from TFBS_tools import print_tfbs,print_rsnp
 import MySQLdb as mdb
 import cgi
 import yate
