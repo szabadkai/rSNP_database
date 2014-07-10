@@ -55,7 +55,7 @@ def print_tfbs(tfbs_IDs):
             rows = cur.fetchall()
 
             if len(rows)>0:
-                print "<tr class='rsnp_view'>"
+                print "<div class='rsnp_view'><tr>"
                 for col in header_order:
                     print "<td>%s</td>" % header[col]
                 print "</tr>"
@@ -83,10 +83,11 @@ def print_tfbs(tfbs_IDs):
                     ######################################
 
 
-                    print "<tr class='rsnp_view'>"
+                    print "<tr>"
                     for col in header_order:
                         print "<td>%s</td>" % row[col]
                     print "</tr>"
+                print "</div>"
             else:
                 pass
 
