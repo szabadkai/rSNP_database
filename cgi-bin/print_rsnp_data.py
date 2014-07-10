@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+from TFBS_tools import print_tfbs
 import MySQLdb as mdb
 import cgi
 import yate
@@ -29,44 +29,14 @@ with con:
         
     for form_data in split_input(field):
         cur = con.cursor(mdb.cursors.DictCursor)
-        cur.execute(""" SELECT DISTINCT * FROM TFBS, RS WHERE TFBS.TFBS_ID = (SELECT DISTINCT TFBS_ID FROM RS WHERE rs_num = '%s') AND TFBS.TFBS_ID = RS.TFBS_ID;""" % form_data)
+        cur.execute(""" SELECT DISTINCT RS.TFBS_ID FROM TFBS, RS WHERE TFBS.TFBS_ID = (SELECT DISTINCT TFBS_ID FROM RS WHERE rs_num = '%s') AND TFBS.TFBS_ID = RS.TFBS_ID;""" % form_data)
         rows = cur.fetchall()
-
         if len(rows)>0:
-            print '<div class="rsnp_view"><table><tr>'
-            for col in header_order:
-                print "<td>%s</td>" % header[col]
-            print "</tr>"
-
-            
-                
-            for row in rows:
-                if row['strand']=='-':
-                    pos = row['stop']-row['SNP_pos']
-                else:
-                    pos = row['SNP_pos']-row['start']
-
-                row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
-                row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
-                row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a></div>" % ((row['TFBS_ID'],) * 4)
-                
-                ######################################
-                temp=[]
-                count=0
-                for letter in row['orto_bases']:
-                    temp.append("<a href='#' title='%s'>%s</a>" % (organisms[count],letter))
-                    count += 1
-                row['orto_bases'] = ''.join(temp) 
-                # jQueryUI to show organism in tooltip
-                ######################################
-
-
-                print "<tr>"
-                for col in header_order:
-                    print "<td>%s</td>" % row[col]
-                print "</tr>"
-            print("</table></div>")
+            temp=[]
+            for i in rows:
+                temp.append(i['TFBS_ID'])
+            print_tfbs(temp)
         else:
-            print"<br>No SNP in this TFBS<br>"
+            print_rsnp(form_data)
 
 print(yate.include_footer(""))
