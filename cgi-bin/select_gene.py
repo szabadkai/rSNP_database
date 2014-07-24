@@ -12,7 +12,7 @@ form_data = cgi.FieldStorage().getvalue('gene')
 print(yate.start_response())
 print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
 
-genes = GenePic()
+
 
 with con:
     print '<div class="left fixed60perc">'
@@ -24,6 +24,6 @@ with con:
     rows = cur.fetchall()
     for row in rows:
     	print("<a href='lookup_gene.py?gene_id=%s'>%s</a>, " % (row['gene_id'],row['alt_name'])),
-    #genes.drawpic()
+
 print("</div>")
 print(yate.include_footer(""))
