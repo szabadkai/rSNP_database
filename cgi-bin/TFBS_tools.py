@@ -3,15 +3,14 @@ def print_tfbs(tfbs_IDs):
     con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
     #from mysql_open import *
     organisms=('hg19','panTro2','gorGor1','ponAbe2','rheMac2','papHam1','calJac1','tarSyr1','micMur1','otoGar1','tupBel1','mm9','rn4','dipOrd1','cavPor3','speTri1','oryCun2','ochPri2','vicPac1','turTru1','bosTau4','equCab2','felCat3','canFam2','myoLuc1','pteVam1','eriEur1','sorAra1','loxAfr3','proCap1','echTel1','dasNov2','choHof1','macEug1','monDom5','ornAna1')
-    header_order_tfbs = ['TFBS_ID','ORTHOLOGS.peak','de_novo_motif','chr','start','stop','similar_TFBS', 'target_perc','p','disease','experiment','GEO','orthologs','snp_count']
+    header_order_tfbs = ['TFBS_ID','de_novo_motif','chr','start','stop','similar_TFBS', 'target_perc','p','disease','experiment','GEO','orthologs','snp_count']
     header_tfbs = {'disease':'celltype','experiment':'antibody','snp_count':'SNP count','GEO':'GEO','orthologs':'peak orthologs','TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
-    print"<script src='../js/tfbs.js'></script>"
 
-    print '<table>'
-    print "<tr>"
+    print '<table id="MyTable" class="tablesorter">'
+    print "<thead><tr>"
     for col in header_order_tfbs:
-        print "<td>%s</td>" % header_tfbs[col]
-    
+        print "<th>%s</th>" % header_tfbs[col]
+    print "</tr></thead><tbody>"
     for tfbs_ID in tfbs_IDs:
         with con:
             cur = con.cursor(mdb.cursors.DictCursor)
@@ -34,10 +33,9 @@ def print_tfbs(tfbs_IDs):
                 row['GEO']= "<a href='%s'>LINK<a>" % row['http']
                 row['orthologs'] = "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a>" % (rows[0]['peak'],rows[0]['peak'])
                 row['snp_count'] = snp_count
-                print "<tr class='tfbs_view'>"
+                print "<tr><td><tr class='tfbs_view'>"
                 for col in header_order_tfbs:
                     print "<td>%s</td>" % row[col]
-                   
             print "</tr>"
 
 
@@ -55,10 +53,10 @@ def print_tfbs(tfbs_IDs):
             rows = cur.fetchall()
 
             if len(rows)>0:
-                print "<tr class='rsnp_view'><td colspan=14><table><tr>"
+                print "<thead><tr class='rsnp_view'><td colspan=14><table><tr>"
                 for col in header_order:
-                    print "<td>%s</td>" % header[col]
-                print "</tr>"             
+                    print "<th>%s</th>" % header[col]
+                print "</tr></thead><tbody>"             
                 for row in rows:
                     if row['strand']=='-':
                         pos = row['stop']-row['SNP_pos']
@@ -80,13 +78,13 @@ def print_tfbs(tfbs_IDs):
                     for col in header_order:
                         print "<td>%s</td>" % row[col]
                     print "</tr>"
-                print "</table></td></tr>"
+                print "</tbody></table></td></tr></td></tr>"
 
 
             else:
-                pass
+		print "</td></tr>" 
 
-    print("</table>")
+    print("</tbody></table>")
 
 def print_rsnp(rs_nums):
     header_order = ['rs_ID','major_al', 'minor_al', 'freq_major', 'freq_min','rSNP_phastcons','orto_bases'] 

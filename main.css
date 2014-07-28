@@ -109,21 +109,21 @@ table{
     margin:0px;padding:0px;
   box-shadow: 5px 6px 3px #b5b0b0;
   
-  -moz-border-radius-bottomleft:10px;
-  -webkit-border-bottom-left-radius:10px;
-  border-bottom-left-radius:10px;
+  -moz-border-radius-bottomleft:5px;
+  -webkit-border-bottom-left-radius:5px;
+  border-bottom-left-radius:5px;
   
-  -moz-border-radius-bottomright:10px;
-  -webkit-border-bottom-right-radius:10px;
-  border-bottom-right-radius:10px;
+  -moz-border-radius-bottomright:5px;
+  -webkit-border-bottom-right-radius:5px;
+  border-bottom-right-radius:5px;
   
-  -moz-border-radius-topright:10px;
-  -webkit-border-top-right-radius:10px;
-  border-top-right-radius:10px;
+  -moz-border-radius-topright:5px;
+  -webkit-border-top-right-radius:5px;
+  border-top-right-radius:5px;
   
-  -moz-border-radius-topleft:10px;
-  -webkit-border-top-left-radius:10px;
-  border-top-left-radius:10px;
+  -moz-border-radius-topleft:5px;
+  -webkit-border-top-left-radius:5px;
+  border-top-left-radius:5px;
 
 }
 
@@ -154,27 +154,27 @@ table{
     height:200px;
 }
 
-tr:last-child td:last-child {
-  -moz-border-radius-bottomright:10px;
-  -webkit-border-bottom-right-radius:10px;
-  border-bottom-right-radius:10px;
+tbody tr:last-child td:last-child {
+  -moz-border-radius-bottomright:5px;
+  -webkit-border-bottom-right-radius:5px;
+  border-bottom-right-radius:5px;
 }
-table tr:first-child td:first-child {
-  -moz-border-radius-topleft:10px;
-  -webkit-border-top-left-radius:10px;
-  border-top-left-radius:10px;
+table thead tr th:first-child {
+  -moz-border-radius-topleft:5px;
+  -webkit-border-top-left-radius:5px;
+  border-top-left-radius:5px;
 }
-table tr:first-child td:last-child {
-  -moz-border-radius-topright:10px;
-  -webkit-border-top-right-radius:10px;
-  border-top-right-radius:10px;
+table thead tr th:last-child {
+  -moz-border-radius-topright:5px;
+  -webkit-border-top-right-radius:5px;
+  border-top-right-radius:5px;
 }
-tr:last-child td:first-child{
-  -moz-border-radius-bottomleft:10px;
-  -webkit-border-bottom-left-radius:10px;
-  border-bottom-left-radius:10px;
+tbody tr:last-child td:first-child{
+  -moz-border-radius-bottomleft:5px;
+  -webkit-border-bottom-left-radius:5px;
+  border-bottom-left-radius:5px;
 }
-tr:hover td{background-color:#eff1f2;}
+tbody tr:hover td{background-color:#eff1f2;}
 
 td{
   vertical-align:middle;
@@ -189,15 +189,18 @@ td{
   font-family:Arial;
   font-weight:normal;
   color:#000000;
-}tr:last-child td{
+}
+tr:last-child td{
   border-width:0px 1px 0px 0px;
-}tr td:last-child{
+}
+tr td:last-child{
   border-width:0px 0px 1px 0px;
-} tr:last-child td:last-child{
+}
+tbody tr:last-child td:last-child{
   border-width:0px 0px 0px 0px;
 }
-tr:first-child td{
-    background:-o-linear-gradient(bottom, #a7a7a7 5%, #acacac 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8e8e8e), color-stop(1, #a7a7a7) );
+thead tr:first-child th{
+  background:-o-linear-gradient(bottom, #a7a7a7 5%, #acacac 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8e8e8e), color-stop(1, #a7a7a7) );
   background:-moz-linear-gradient( center top, #0057af 5%, #0057af 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#0057af", endColorstr="#0057af");  background: -o-linear-gradient(top,#0057af,0057af);
 
@@ -210,16 +213,16 @@ tr:first-child td{
   font-weight:bold;
   color:#ffffff;
 }
-tr:first-child:hover td{
+thead tr:hover th{
   background:-o-linear-gradient(bottom, #a0a0a0 5%, #a0a0a0 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a8a8a8), color-stop(1, #a7a7a7) );
   background:-moz-linear-gradient( center top, #acacac 5%, #0057af 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#a3a3a3", endColorstr="#989898");  background: -o-linear-gradient(top,#0057af,0057af);
 
   background-color:#aaa;
 }
-tr:first-child td:first-child{
+thead tr th:first-child{
   border-width:0px 0px 1px 0px;
 }
-tr:first-child td:last-child{
+thead tr th:last-child{
   border-width:0px 0px 1px 1px;
 }

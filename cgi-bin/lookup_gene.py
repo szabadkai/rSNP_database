@@ -27,6 +27,7 @@ with con:
         temp.append(row['TFBS_ID'])
         genes.addTFBS(row['TFBS_ID'])
 
-    print_tfbs(temp)
     genes.drawpic()
+    print'<br><br>'
+    print_tfbs(temp)
 print(yate.include_footer(""))

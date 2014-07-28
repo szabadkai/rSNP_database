@@ -4,4 +4,5 @@ $(document).ready(function() {
 	$(".tfbs_view").on("click", function(){
 		$(this).next(".rsnp_view").slideToggle();
 	});
+	$("#MyTable").tablesorter(); 
 });
