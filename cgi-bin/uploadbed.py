@@ -46,13 +46,15 @@ tmpname = putToTmp(bedfile) # get the name of the tmp file
 print(yate.start_response())
 print(yate.include_header('')) 
  
-userfile = BedTool(tmpname)
+userfile = BedTool(tmpname).sort()
 mypath='/var/www/rsnpdb/DATA/BED/'
 onlyfiles = [ f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath,f)) ]
 scores=dict()
 
 print "<p>The following experiments show higher jaccard score than <strong>%s</strong> with your experiment:</p>" % jaccard
 print "<table><tr><td>Experiment</td><td>jaccard score</td></tr>"
+
+
 for bed in onlyfiles:
 		a = BedTool(mypath+bed).sort()
 		jac=BedTool.jaccard(userfile,a)
