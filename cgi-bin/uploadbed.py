@@ -56,7 +56,7 @@ print "<table><tr><td>Experiment</td><td>jaccard score</td></tr>"
 
 
 for bed in onlyfiles:
-		a = BedTool(mypath+bed).sort()
+		a = BedTool(mypath+bed)
 		jac=BedTool.jaccard(userfile,a)
 		if jac['jaccard']>jaccard:
 			scores[bed]=jac['jaccard']
