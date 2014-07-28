@@ -24,7 +24,7 @@ class GenePic:
 
         self.cursor.execute(""" select start,stop from TFBS where TFBS_ID = %d """ % (self.tfbs))
         row = self.cursor.fetchone()
-        self.features.append([int(row['start']), int(row['stop'])])
+        self.features.append([int(row['start']), int(row['stop']), self.tfbs])
 
     # set cursor for database queries
     def setcursor(self, cur):
@@ -44,7 +44,26 @@ class GenePic:
         # SVG drawing code
         print('<br />')
 
-        height  = self.__class__.tfbsheight * len(self.features) + 2 * self.__class__.topmargin
+        # calculate SVG height
+        prev = list()
+        maxheight = 0
+        for f in self.features:
+
+            start  = self.__class__.sidemargin + float(f[0] - self.genestart) / float(self.geneend - self.genestart) * (100.0 - 2.0 * self.__class__.sidemargin)
+            length = self.__class__.sidemargin + float(f[1] - self.genestart) / float(self.geneend - self.genestart) * (100.0 - 2.0 * self.__class__.sidemargin) - start
+            length = max(length, 0.5)
+            height = 0 # it is not a percentage, but the count
+
+            for p in prev:
+                if p[0] + p[1] > start and p[0] < start + length:
+                    height += 1
+
+            if height > maxheight:
+                maxheight = height
+
+            prev.append([start, length, height, f[2]])
+
+        height  = self.__class__.tfbsheight * maxheight + 2 * self.__class__.topmargin
         counter = float(self.__class__.topmargin)  / float(height) * 100.0
         step    = float(self.__class__.tfbsheight) / float(height) * 100.0
 
@@ -53,15 +72,10 @@ class GenePic:
 
         # draw ruler
         print('<line x1="%f%%" y1="%f%%" x2="%f%%" y2="%f%%" stroke-width="1" stroke="black" />' % (self.__class__.sidemargin, 1.0, 100.0 - self.__class__.sidemargin, 1.0))
-
-        for f in self.features:
-
-            start = self.__class__.sidemargin + float(f[0] - self.genestart) / float(self.geneend - self.genestart) * (100.0 - 2.0 * self.__class__.sidemargin)
-            end   = self.__class__.sidemargin + float(f[1] - self.genestart) / float(self.geneend - self.genestart) * (100.0 - 2.0 * self.__class__.sidemargin) - start
-            end   = max(end, 0.5)
-
-            print('<rect x="%f%%" y="%f%%" width="%f%%" height="%f%%" />' % (start, counter, end, step))
-
-            counter += step
+        for f in prev:
+            start = f[0]
+            width = f[1]
+            ypos  = counter + step * f[2]
+            print('<rect x="%.4f%%" y="%.4f%%" width="%.4f%%" height="%.4f%%" onmouseover="this.style.stroke=\'#ff0000\'" onmouseout="this.style.stroke=\'#000000\'" onclick="alert(\'%s\')" />' % (start, ypos, width, step, f[3]))
 
         print("</svg>")
