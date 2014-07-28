@@ -36,7 +36,7 @@ def print_tfbs(tfbs_IDs):
                 for col in header_order_tfbs:
                     print "<td>%s</td>" % row[col]
             print "</tr>"
-
+            id=row['TFBS_ID']
 
            
             #######################################################
@@ -50,9 +50,9 @@ def print_tfbs(tfbs_IDs):
                             WHERE TFBS.TFBS_ID='%s' AND TFBS.TFBS_ID = RS.TFBS_ID""" % tfbs_ID)
 
             rows = cur.fetchall()
-
+            
             if len(rows)>0:
-                print "<tr class='rsnp_view'><td colspan=14><table><thead><tr>"
+                print "<div class='field' id='%s'><table><thead><tr>" % (id)
                 for col in header_order:
                     print "<th>%s</th>" % header[col]
                 print "</tr></thead><tbody>"             
@@ -77,7 +77,7 @@ def print_tfbs(tfbs_IDs):
                     for col in header_order:
                         print "<td>%s</td>" % row[col]
                     print "</tr>"
-                print "</tbody></table></td></tr>"
+                print "</tbody></table></div>"
 
 
             else:
