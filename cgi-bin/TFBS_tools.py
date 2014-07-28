@@ -26,14 +26,13 @@ def print_tfbs(tfbs_IDs):
                             CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment 
                             ;""" % tfbs_ID)
             rows = cur.fetchall()
-           
             for row in rows:
                 row['experiment'] = row['experiment'].split('_')[-1]
                 row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
                 row['GEO']= "<a href='%s'>LINK<a>" % row['http']
                 row['orthologs'] = "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a>" % (rows[0]['peak'],rows[0]['peak'])
                 row['snp_count'] = snp_count
-                print "<tr><td><tr class='tfbs_view'>"
+                print "<tr class='tfbs_view'>"
                 for col in header_order_tfbs:
                     print "<td>%s</td>" % row[col]
             print "</tr>"
@@ -53,7 +52,7 @@ def print_tfbs(tfbs_IDs):
             rows = cur.fetchall()
 
             if len(rows)>0:
-                print "<thead><tr class='rsnp_view'><td colspan=14><table><tr>"
+                print "<tr class='rsnp_view'><td colspan=14><table><thead><tr>"
                 for col in header_order:
                     print "<th>%s</th>" % header[col]
                 print "</tr></thead><tbody>"             
@@ -78,11 +77,11 @@ def print_tfbs(tfbs_IDs):
                     for col in header_order:
                         print "<td>%s</td>" % row[col]
                     print "</tr>"
-                print "</tbody></table></td></tr></td></tr>"
+                print "</tbody></table></td></tr>"
 
 
             else:
-		print "</td></tr>" 
+                pass
 
     print("</tbody></table>")
 
