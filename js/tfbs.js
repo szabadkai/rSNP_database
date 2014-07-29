@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$("th").on("click",function(){
 		$('.tfbs_view').each(function() {
 			var currentId = $(this).attr('id');
-			$("#"+currentId).insertAfter($(this));
+			$(".rsnp_view" > "#"+currentId).insertAfter($(this));
 		});
 	});
 });
