@@ -6,6 +6,7 @@ $(document).ready(function() {
 	});
 	$("#MyTable").tablesorter(); 
 	$("th").on("click",function(){
+		console.log('click!!!')
 		$('.tfbs_view').each(function() {
 			var currentId = $(this).attr('id');
 			$(".rsnp_view#"+currentId).insertAfter($(this));
