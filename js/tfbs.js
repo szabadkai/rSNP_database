@@ -5,9 +5,10 @@ $(document).ready(function() {
 		$(this).next(".rsnp_view").slideToggle();
 	});
 	$("#MyTable").tablesorter(); 
-	$('.tfbs_view').each(function() {
-		var currentId = $(this).attr('id');
-		$("#"+currentId).insertAfter($(this))
+	$("th").on("click",function(){
+		$('.tfbs_view').each(function() {
+			var currentId = $(this).attr('id');
+			$("#"+currentId).insertAfter($(this));
+		});
 	});
-
 });
