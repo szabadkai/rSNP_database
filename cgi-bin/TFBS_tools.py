@@ -7,7 +7,7 @@ def print_tfbs(tfbs_IDs):
     header_tfbs = {'disease':'celltype','experiment':'antibody','snp_count':'SNP count','GEO':'GEO','orthologs':'peak orthologs','TFBS_ID':'TFBS','ORTHOLOGS.peak':'PEAK','de_novo_motif':'motif', 'chr':'chr','start':'start','similar_TFBS':'similar_TFBS' ,'stop':'stop','target_perc':'target%','p':'P'}
 
     print '<table id="MyTable" class="tablesorter">'
-    print "<thead><tr>"
+    print "<thead class='header'><tr>"
     for col in header_order_tfbs:
         print "<th>%s</th>" % header_tfbs[col]
     print "</tr></thead><tbody>"

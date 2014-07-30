@@ -5,11 +5,17 @@ $(document).ready(function() {
 		$(this).next(".rsnp_view").slideToggle();
 	});
 	$("#MyTable").tablesorter(); 
-	$("th").on("click",function(){
-		console.log('click!!!')
-		$('.tfbs_view').each(function() {
-			var currentId = $(this).attr('id');
-			$(".rsnp_view#"+currentId).insertAfter($(this));
-		});
-	});
 });
+
+$("thead").on("click",function(){
+         setTimeout(function(){
+		 $('.tfbs_view').each(function() {
+                	var currentId = $(this).attr('id');
+                	$(".rsnp_view#"+currentId).insertAfter(".tfbs_view#"+currentId);
+       		 });
+
+	}, 500);  
+
+});
+
+
