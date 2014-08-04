@@ -22,7 +22,7 @@ def split_input(field):
 field = cgi.FieldStorage().getvalue('SNPs')
 
 print(yate.start_response())
-print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
+print(yate.include_header("Your SNPs, served fresh and hot!"))  
 
 
 with con:

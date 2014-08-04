@@ -52,7 +52,7 @@ def print_tfbs(tfbs_IDs):
             rows = cur.fetchall()
             
             if len(rows)>0:
-                print "<tr class='rsnp_view' id='%s'><td colspan=13 ><table><thead><tr>" % (id)
+                print "<tr class='rsnp_view expand-child' id='%s'><td colspan=13 ><table><thead><tr>" % (id)
                 for col in header_order:
                     print "<th>%s</th>" % header[col]
                 print "</tr></thead><tbody>"             
@@ -61,25 +61,23 @@ def print_tfbs(tfbs_IDs):
                         pos = row['stop']-row['SNP_pos']
                     else:
                         pos = row['SNP_pos']-row['start']
-                        row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
-                        row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
-                        row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a></div>" % ((row['TFBS_ID'],) * 4)
-                        ######################################
-                        temp=[]
-                        count=0
-                        for letter in row['orto_bases']:
-                           temp.append("<a href='#' title='%s'>%s</a>" % (organisms[count],letter))
-                           count += 1
-                        row['orto_bases'] = ''.join(temp) 
-                        # jQueryUI to show organism in tooltip
-                        ######################################
-                        print "<tr>"
-                        for col in header_order:
-                            print "<td>%s</td>" % row[col]
-                        print "</tr>"
+                    row['matrix_id']="<a href='print_matrix.py?id=%s&pos=%s&minor=%s&major=%s'>show matrix</a>" % (row['rs_ID'],pos,row['minor_al'],row['major_al'])
+                    row['rs_ID']= "<a href='http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=%s'>%s</a><br>" % ((row['RS_num'],) * 2)
+                    row['TFBS_ID']="<div id=\"%s\"><a onclick='tfbsdata(\"%s\")' href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a></div>" % ((row['TFBS_ID'],) * 4)
+                    ######################################
+                    temp=[]
+                    count=0
+                    for letter in row['orto_bases']:
+                       temp.append("<a href='#' title='%s'>%s</a>" % (organisms[count],letter))
+                       count += 1
+                    row['orto_bases'] = ''.join(temp) 
+                    # jQueryUI to show organism in tooltip
+                    ######################################
+                    print "<tr>"
+                    for col in header_order:
+                        print "<td>%s</td>" % row[col]
+                    print "</tr>"
                 print "</tbody></table></td></tr>"
-
-
             else:
                 pass
 

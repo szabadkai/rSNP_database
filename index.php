@@ -58,7 +58,7 @@
   <div id="tabs-3">
     <form action="./cgi-bin/select_gene.py" enctype="multipart/form-data" method="POST">
       Choose your gene of interest!<br>
-      <textarea id="gene" class="reset" rows="1" cols="50" name="gene">HLA</textarea><br>
+      <input type="text" id="gene" class="reset" rows="1" cols="50" name="gene" value="HLA"><br>
       <input type=submit value="Select">
       </form>
       </div>

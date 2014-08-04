@@ -10,7 +10,7 @@ con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 form_data = cgi.FieldStorage().getvalue('gene_id').upper()
 
 print(yate.start_response())
-print(yate.include_header("Here are your SNP(s), served fresh and hot!"))  
+print(yate.include_header("Your SNPs, served fresh and hot!"))  
 
 genes = GenePic(form_data)
 
