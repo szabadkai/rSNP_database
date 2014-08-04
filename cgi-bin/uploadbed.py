@@ -30,19 +30,6 @@ else:
 
 tmpname = putToTmp(bedfile) # get the name of the tmp file
 
-# # SQL query
-
-# con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
-
-# with con:
-#     cur = con.cursor(mdb.cursors.DictCursor)
-#     cur.execute(""" SELECT * FROM TFBS,HTTP 
-#                     WHERE TFBS.experiment='%s' AND 
-#                     CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data['bed'])
-#     rows = cur.fetchall()
-
-# HTML output
-
 print(yate.start_response())
 print(yate.include_header('')) 
  
@@ -62,11 +49,12 @@ for bed in onlyfiles:
 			scores[bed]=jac['jaccard']
 
 for bed in sorted(scores.items(), key=lambda x: x[1])[::-1]:
-	print "<tr><td><a href='print_exp_data.py?exp=%s'>%s</a></td><td>%s</td></tr>"% (str(bed[0]).split('.')[0],bed[0],bed[1])
+	print "<tr><td><a href='print_exp_data.py?exp=%s;user=%s'>%s</a></td><td>%s</td></tr>"% (str(bed[0]).split('.')[0],tmpname,bed[0],bed[1])
+
 
 print"</table>"
 print(yate.include_footer({""}))
 
 # clean up mess
-os.remove(tmpname)
+#os.remove(tmpname)
 

@@ -117,3 +117,15 @@ def print_rsnp(rs_nums):
                 print "<td>%s</td>" % row[col]
             print "</tr>"
     print "</table>"
+
+def print_intervall(chrom,start,stop):
+    import MySQLdb as mdb
+    con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
+    cur = con.cursor(mdb.cursors.DictCursor)
+    cur.execute(" SELECT TFBS_ID FROM TFBS WHERE chr = %s AND start BETWEEN %s and %s OR stop BETWEEN %s and %s ;" % (chrom,start,stop,start,stop))
+    rows = cur.fetchall()
+    temp=[]
+    for row in rows:
+        temp.append(row['TFBS_ID'])
+    return temp 
+
