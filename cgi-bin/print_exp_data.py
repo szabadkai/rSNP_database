@@ -1,8 +1,10 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 
 import MySQLdb as mdb
 import cgi
 import yate
+from TFBS_tools import print_tfbs
+
 
 con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
 
@@ -17,28 +19,14 @@ print(yate.start_response())
 print(yate.include_header(''))  
 print(yate.para(form_data+" <a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) ))
 with con:
-    print '<div class="input_field"><table>'
     cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(""" SELECT * FROM TFBS,HTTP 
-                    WHERE TFBS.experiment='%s' AND 
-                    CONCAT_WS('_','hs',TFBS.disease,TFBS.experiment)=HTTP.experiment order by chr;""" % form_data)
+    cur.execute(" SELECT TFBS_ID FROM TFBS WHERE TFBS.experiment='%s' ORDER BY chr;" % form_data)
     rows = cur.fetchall()
-
-    print "<thead>"
-    for col in header_order:
-        print "<th>%s</th>" % header[col]
-    print "<th>GEO</th></thead>"
-
+    temp=[]
     for row in rows:
-        row['TFBS_ID']="<a href='print_tfbs_data.py?id=%s' target=\"_blank\">tfbs%s</a>" % ((row['TFBS_ID'],) * 2)
-        for col in header_order:
-            print "<th>%s</th>" % row[col]
-        print "<th><a href='%s'>LINK<a></th>" % row['http']    
-        print "</tr>"
+        temp.append(row['TFBS_ID'])
 
-
-    print("</table></div><br>")
-    print("<a href='export2bed.py?exp=%s' download='%s.bed'>download bed</a><br>" % (form_data,form_data) )
+    print_tfbs(temp)
 
 print(yate.include_footer({""}))
 
