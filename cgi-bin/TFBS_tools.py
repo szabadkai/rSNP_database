@@ -122,7 +122,7 @@ def print_intervall(chrom,start,stop):
     import MySQLdb as mdb
     con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
     cur = con.cursor(mdb.cursors.DictCursor)
-    cur.execute(" SELECT TFBS_ID FROM TFBS WHERE chr = %s AND start BETWEEN %s and %s OR stop BETWEEN %s and %s ;" % (chrom,start,stop,start,stop))
+    cur.execute(" SELECT TFBS_ID FROM TFBS WHERE (STRCMP(chr, %s) AND ((start BETWEEN %s and %s)) OR (STRCMP(chr,%s) AND(stop BETWEEN %s and %s))) ;" % (chrom,start,stop,chrom,start,stop))
     rows = cur.fetchall()
     temp=[]
     for row in rows:

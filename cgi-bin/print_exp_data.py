@@ -20,12 +20,12 @@ b = BedTool(mypath)
 
 result = []
 for line in BedTool.intersect(a,b):
-	result.append(line.split())
-
+	result.append(str(line).split())
 print(yate.start_response())
 print(yate.include_header(''))  
 
 for line in result:
-	print_intervall(line[0][3],line[1],line[2])
+	print_intervall("'"+line[0][3:].lower()+"'",line[1],line[2])
+
 print(yate.include_footer({""}))
 
