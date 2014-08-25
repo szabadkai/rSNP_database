@@ -122,7 +122,8 @@ def return_intervall(chrom,start,stop):
     #
     #   returns a list of TFBSs found in intervall
     #
-    con = mdb.connect('genome', 'rsnp', 'RSNP', 'testdb');
+    import MySQLdb as mdba
+    con = mdba.connect('genome', 'rsnp', 'RSNP', 'testdb');
     cur = con.cursor(mdb.cursors.DictCursor)
     cur.execute(" SELECT TFBS_ID FROM TFBS WHERE (STRCMP(chr, %s) AND ((start BETWEEN %s and %s)) OR (STRCMP(chr,%s) AND(stop BETWEEN %s and %s))) ;" % (chrom,start,stop,chrom,start,stop))
     rows = cur.fetchall()
