@@ -66,7 +66,7 @@
 <div id="tabs-4">
 	Specify region you are interested in!<br>
 	<form action='./cgi-bin/select_region.py' enctype="multipart/form-data" method="POST">
-		<select>
+		<select id='chr'>
 <?php
 $sample= range(1,22);
 $sample[] = 'X';
@@ -76,7 +76,7 @@ foreach($sample as $i){
 }
 ?>
 </select> 
-from: <input type="number"> to: <input type='number'>
+from: <input type="number" id='start'> to: <input type='number' id='stop'>
 <br><input type="submit" value="Select">
 	</form>
 </div>
