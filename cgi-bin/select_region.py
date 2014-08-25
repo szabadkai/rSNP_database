@@ -5,9 +5,10 @@ from TFBS_tools import return_intervall
 import cgi
 import yate
 
-Chr = cgi.FieldStorage().getvalue('chr')
-Start = cgi.FieldStorage().getvalue('start')
-Stop = cgi.FieldStorage().getvalue('stop')
+form_data = cgi.FieldStorage()
+Chr=form_data['chr']
+Start=form_data['start']
+Stop=form_data['stop']
 
 print(yate.start_response())
 print(yate.include_header(''))  
