@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from TFBS_tools import print_tfbs,return_intervall
 import cgi
 import yate
