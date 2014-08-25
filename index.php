@@ -37,6 +37,7 @@
     <li><a href="#tabs-1">SNP view</a></li>
     <li><a href="#tabs-2">BED view</a></li>
     <li><a href="#tabs-3">Gene view</a></li>
+    <li><a href="#tabs-4">Region view</a></li>
   </ul>
   <div id="tabs-1">
     <form action="./cgi-bin/print_rsnp_data.py" method="POST" enctype="application/x-www-form-urlencoded">
@@ -62,7 +63,23 @@
       <input type=submit value="Select">
       </form>
       </div>
+<div id="tabs-4">
+	Specify region you are interested in!<br>
+	<form action='./cgi-bin/select_region.py' enctype="multipart/form-data" method="POST">
+		<select>
+<?php
+$sample= range(1,22);
+$sample[] = 'X';
+$sample[] = 'Y';
+foreach($sample as $i){
+	echo "<option value='".$i."'>chr".$i."</option>";
+}
+?>
+</select> 
+from: <input type="number"> to: <input type='number'>
+<br><input type="submit" value="Select">
+	</form>
 </div>
-
+</div>
 </body></html>
 
