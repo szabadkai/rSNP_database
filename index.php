@@ -65,20 +65,20 @@
       </div>
 <div id="tabs-4">
 	Specify region you are interested in!<br>
-	<form action='./cgi-bin/select_region.py' enctype="multipart/form-data" method="POST">
-		<select id='chr'>
-<?php
-$sample= range(1,22);
-$sample[] = 'X';
-$sample[] = 'Y';
-foreach($sample as $i){
-	echo "<option value='".$i."'>chr".$i."</option>";
-}
-?>
-</select> 
-from: <input type="number" id='start'> to: <input type='number' id='stop'>
-<br><input type="submit" value="Select">
-	</form>
+	<form action='./cgi-bin/select_region.py' method="POST" enctype="application/x-www-form-urlencoded">
+    <select name="chr" id='chr'>
+      <?php
+        $sample= range(1,22);
+        $sample[] = 'X';
+        $sample[] = 'Y';
+        foreach($sample as $i){
+        	echo "<option value='".$i."'>chr".$i."</option>";
+        }
+      ?>
+    </select> 
+    from: <input type="number" name="start" id='start'> to: <input type='number' name="stop" id='stop'>
+    <br><input type="submit" value="Select">
+  </form>
 </div>
 </div>
 </body></html>
