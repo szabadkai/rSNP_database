@@ -35,8 +35,8 @@ def print_tfbs(tfbs_IDs):
                 print "<tr class='tfbs_view' id='%s'>" % rows[0]['TFBS_ID']
                 for col in header_order_tfbs:
                     print "<td>%s</td>" % row[col]
-            print "</tr>"
-            id=row['TFBS_ID']
+                print "</tr>"
+                id=row['TFBS_ID']
 
            
             #######################################################
@@ -125,7 +125,7 @@ def return_intervall(chrom,start,stop):
     import MySQLdb as mdba
     con = mdba.connect('genome', 'rsnp', 'RSNP', 'testdb');
     cur = con.cursor(mdba.cursors.DictCursor)
-    cur.execute(" SELECT TFBS_ID FROM TFBS WHERE (STRCMP(chr, %s) AND ((start BETWEEN %s and %s)) OR (STRCMP(chr,%s) AND(stop BETWEEN %s and %s))) ;" % (chrom,start,stop,chrom,start,stop))
+    cur.execute("SELECT TFBS_ID FROM TFBS WHERE chr=%s AND start BETWEEN %s and %s ;" % (chrom,start,stop))
     rows = cur.fetchall()
     temp=[]
     for row in rows:

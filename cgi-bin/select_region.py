@@ -6,11 +6,12 @@ import cgi
 import yate
 
 form_data = cgi.FieldStorage()
-Chr=form_data['chr']
-Start=form_data['start']
-Stop=form_data['stop']
+c = form_data.getvalue('chr')
+s = form_data.getvalue('start')
+t = form_data.getvalue('stop')
+
 
 print(yate.start_response())
 print(yate.include_header(''))  
-print_tfbs(return_intervall(Chr,Start,Stop))
+print_tfbs(return_intervall(c,s, t))
 print(yate.include_footer(""))
