@@ -6,6 +6,14 @@ import yate
 import tempfile
 import os
 from pybedtools import BedTool
+import thread
+
+def score(onlyfiles):
+	for bed in onlyfiles:
+		a = BedTool(mypath+bed)
+		jac=BedTool.jaccard(userfile.sort(),a)
+		if jac['jaccard']>jaccard:
+			scores[bed]=jac['jaccard']
 
 def putToTmp(f):
 	# upload a file and store it in tmp with unique name (avoid name collision)
@@ -42,11 +50,8 @@ print "<p>The following experiments show higher jaccard score than <strong>%s</s
 print "<table><tr><td>Experiment</td><td>jaccard score</td></tr>"
 
 
-for bed in onlyfiles:
-		a = BedTool(mypath+bed)
-		jac=BedTool.jaccard(userfile.sort(),a)
-		if jac['jaccard']>jaccard:
-			scores[bed]=jac['jaccard']
+
+score(onlyfiles)
 
 for bed in sorted(scores.items(), key=lambda x: x[1])[::-1]:
 	print "<tr><td><a href='print_exp_data.py?exp=%s;user=%s'>%s</a></td><td>%s</td></tr>"% (str(bed[0]).split('.')[0],tmpname,bed[0],bed[1])
