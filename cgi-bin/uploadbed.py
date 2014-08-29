@@ -49,9 +49,17 @@ scores=dict()
 print "<p>The following experiments show higher jaccard score than <strong>%s</strong> with your experiment:</p>" % jaccard
 print "<table><tr><td>Experiment</td><td>jaccard score</td></tr>"
 
+a=onlyfiles[:len(onlyfiles)/2]
+b=onlyfiles[len(onlyfiles)/:]
 
+try:
+	thread.start_new_thread( score(a) )
+	thread.start_new_thread( score(b) )
+except:
+	print "Error: unable to start thread"
+while 1:
+	pass
 
-score(onlyfiles)
 
 for bed in sorted(scores.items(), key=lambda x: x[1])[::-1]:
 	print "<tr><td><a href='print_exp_data.py?exp=%s;user=%s'>%s</a></td><td>%s</td></tr>"% (str(bed[0]).split('.')[0],tmpname,bed[0],bed[1])
