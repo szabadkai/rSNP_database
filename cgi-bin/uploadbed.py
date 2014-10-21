@@ -49,12 +49,16 @@ scores=dict()
 print "<p>The following experiments show higher jaccard score than <strong>%s</strong> with your experiment:</p>" % jaccard
 print "<table><tr><td>Experiment</td><td>jaccard score</td></tr>"
 
-a=onlyfiles[:len(onlyfiles)/2]
-b=onlyfiles[len(onlyfiles)/:]
+a=onlyfiles[:len(onlyfiles)/3]
+b=onlyfiles[len(onlyfiles)/3:len(onlyfiles)*2/3]
+c=onlyfiles[len(onlyfiles)*2/3:]
+
 
 try:
 	thread.start_new_thread( score(a) )
 	thread.start_new_thread( score(b) )
+        thread.start_new_thread( score(c) )
+
 except:
 	print "Error: unable to start thread"
 while 1:

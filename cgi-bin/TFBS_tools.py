@@ -29,7 +29,7 @@ def print_tfbs(tfbs_IDs):
             for row in rows:
                 row['experiment'] = row['experiment'].split('_')[-1]
                 row['TFBS_ID']="tfbs%s"%(row['TFBS_ID'])
-                row['GEO']= "<a href='%s'>LINK<a>" % row['http']
+                row['GEO']= "<a href='%s'>LINK</a>" % row['http']
                 row['orthologs'] = "<a href='ortho_fasta.py?peak=%s' download='%s.fa'>download peak orthologs</a>" % (rows[0]['peak'],rows[0]['peak'])
                 row['snp_count'] = snp_count
                 print "<tr class='tfbs_view' id='%s'>" % rows[0]['TFBS_ID']
